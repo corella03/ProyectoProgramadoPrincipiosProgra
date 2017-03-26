@@ -9,5 +9,3 @@ def Login(ID, contraseña):
         print("Bienvenido Mae")
     else:
         print("NO ERES BIENVENIDO")
-id,contra = DatosAdministrador()
-Login(id,contra)

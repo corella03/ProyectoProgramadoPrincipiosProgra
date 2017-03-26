@@ -13,7 +13,8 @@ def escogerOpciones():
         opcionesMenu = input("Ingrese un número del Menú")
         if opcionesMenu == "1":
             import Administrador.Login
-            Administrador.Login.Login("","")
+            id,contra = Administrador.Login.DatosAdministrador()
+            Administrador.Login.Login(id, contra)
             input("\npulsa una tecla para continuar")
         elif opcionesMenu == "2":
             print("")
