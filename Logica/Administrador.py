@@ -7,8 +7,8 @@ class Administrador:
         ingresoContra = input("Digite Contra")
         while True:
             if ingresoId == self.ID and ingresoContra == self.contraseña:
-                print("\033[;34m" +"Bienvenido ADMIN \n")
-                print("\033[;34m" + "\nSelecciona una opción\n"
+                print("\033[;34m"+"\nBienvenido ADMIN \n"
+                    "Selecciona una opción\n"
                     "\t1 - Cambiar contra\n"
                     "\t0 - Salir\n" + "\033[;23m")
                 while True:
@@ -17,7 +17,7 @@ class Administrador:
                         ingresoNuevaContraseña = input("Ingrese la nueva Contraseña")
                         self.contraseña = ingresoNuevaContraseña
                         input("Haz cambiado de Contraseña\n"
-                              "pulsa una tecla para continuar")
+                              "Presione ENTER para Continuar")
                     elif opcionesAdministrador == "0":
                         break
                     else:
@@ -28,5 +28,5 @@ class Administrador:
                 break
             else:
                 print("NO ERES BIENVENIDO")
-#x = Administrador()
+#x = Logica()
 #x.DatosAdministrador()
