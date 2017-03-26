@@ -1,12 +1,8 @@
 def menu():
-    print("\nSelecciona una opción\n"
-          "\t1 - Modo Administrador\n"
-          "\t2 - Modo Usuario\n"
-          "\t0 - Salir")
-def menuAdmin():
-    print("\nSelecciona una opción\n"
-          "\t1 - Cambiar contra\n"
-          "\t2 - Salir\n")
+    print("\033[;32m"+"\nSelecciona una opción\n"
+          "\033[;32m" +"\t1 - Modo Administrador\n"
+          "\033[;32m" +"\t2 - Modo Usuario\n"
+          "\033[;32m" +"\t0 - Salir"+"\033[;23m")
 def escogerOpciones():
     while True:
         # Llamamos al Menú
