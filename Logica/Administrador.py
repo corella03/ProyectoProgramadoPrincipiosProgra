@@ -1,3 +1,4 @@
+import sys
 class Administrador:
     def __init__(self):
         self.ID = "alonso"
@@ -28,5 +29,5 @@ class Administrador:
                 break
             else:
                 print("NO ERES BIENVENIDO")
-#x = Logica()
-#x.DatosAdministrador()
+x = Administrador()
+x.DatosAdministrador()
