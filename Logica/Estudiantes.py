@@ -1,34 +1,62 @@
-import sys
-listaEstudiantes = []
-class Estudiante():
-    def AgregarEstudiante (self):
-        ingresoNombre = input("Ingrese Nombre")
-        ingresoApellido = input("Ingrese Apellido")
-        ingresoDireccion = input("Ingrese Dirección")
-        ingreseTelefono = input("Ingrese el Número")
-        ingresoCorreo = input("Ingrese Correo")
-        listaEstudiantes.extend([[ingresoNombre,ingresoApellido,ingresoDireccion,ingreseTelefono,ingresoCorreo]])
-        print(listaEstudiantes)
-        return listaEstudiantes
-    def EliminarEstudiante(self):
-        ingresoPosicionEstudiante = int (input("Ingrese La poscion del Estudiante:"))
-        listaEstudiantes.remove(listaEstudiantes[ingresoPosicionEstudiante])
-        print(listaEstudiantes)
-def menu():
+StudentList = []
+def AddStudent():
+    nameEntry = input("Ingrese el Nombre del Estudiante:")
+    lastNameEntry = input("Ingrese el Apellido del Estudiante:")
+    identificationCardEntry = input("Ingrese el número de Cédula del Estudiante:")
+    addressEntry = input("Ingrese la Dirección donde vive el Estudiante:")
+    phoneEntry = input("Ingrese el Número de Telefono del Estudiante:")
+    emailEntry = input("Ingrese el email del Estudiante:")
+    import Logica.Carrera
+    StudentList.append(Logica.Carrera.Student().DataStudent(nameEntry,lastNameEntry,identificationCardEntry,addressEntry,
+    phoneEntry,emailEntry))
+    print(StudentList)
+def DeleteStudent():
+    enterStudentPosition = int(input("Ingrese el numero del estudiante que quiera eliminar:"))
+    StudentList.remove(StudentList[enterStudentPosition])
+def Menu():
+    print("\033[;34m" + "\nSelecciona una opción\n"
+     "\t1 - Agregar Estudiante\n"
+     "\t2 - Eliminar Estudiante\n"
+     "\t3 - Ver Estudiantes\n"
+     "\t0 - Salir" + "\033[;23m")
+def MenuOptions():
     while True:
-        print("\033[;34m" + "\nBienvenido ADMIN \n"
-        "Selecciona una opción\n"
-        "\t1 - Agregar Estudiantes\n"
-        "\t2 - Eliminar Estudiantes\n"
-        "\t3 - Ver Lista Estudiantes\n"
-        "\t0 - Salir\n" + "\033[;23m")
-        ingresoOpcion = input("Elija")
-        if ingresoOpcion == "1":
-            Estudiante().AgregarEstudiante()
-        elif ingresoOpcion == "2":
-            Estudiante().EliminarEstudiante()
-        elif ingresoOpcion == "3":
-            print(listaEstudiantes)
-        elif ingresoOpcion == "0":
-            sys.exit()
-menu()
+        Menu()
+        optionsEntry = input("Ingrese la Opción a Escoger")
+        if optionsEntry == "1":
+            AddStudent()
+            input("\npulsa una tecla para continuar")
+        elif optionsEntry == "2":
+            DeleteStudent()
+            input("\npulsa una tecla para continuar")
+        elif optionsEntry == "3":
+            print(StudentList)
+            input("\npulsa una tecla para continuar")
+        elif optionsEntry == "0":
+            break
+        else:
+            print("")
+            input("No has pulsado ninguna opción correcta...\n"
+                  "Presione enter Para volver al Menú")
+MenuOptions()
+
+
+
+
+
+'''
+def CreateFile():
+    StudentFile = open("Student.txt", "w")
+    StudentFile.close()
+CreateFile()
+def WriteFile():
+    StudentFile = open("Student.txt", "a")
+    StudentFile.write()
+    StudentFile.close()
+WriteFile()
+def ReadAsList():
+    StudentFile = open("Student.txt", "r")
+    lineas = StudentFile.readlines()
+    print(lineas)
+    StudentFile.close()
+'''

@@ -26,7 +26,7 @@ class Administrador:
                         input("No has pulsado ninguna opción correcta...\n"
                               "Presione enter Para volver al Menú")
             elif opcionesAdministrador == "0":
-                break
+                sys.exit()
             else:
                 print("NO ERES BIENVENIDO")
 x = Administrador()
