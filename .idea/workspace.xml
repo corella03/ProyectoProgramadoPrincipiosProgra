@@ -18,6 +18,7 @@
       <file leaf-file-name="MenuDelSistema.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="425">
               <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
@@ -40,6 +41,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="47" lean-forward="true" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+=======
+            <state relative-caret-position="480">
+              <caret line="24" column="24" lean-forward="false" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
               <folding />
             </state>
           </provider>
@@ -59,6 +64,10 @@
       <list>
         <option value="$PROJECT_DIR$/Administrador/Login.py" />
         <option value="$PROJECT_DIR$/Logica/Login.py" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/Logica/Administrador.py" />
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
         <option value="$PROJECT_DIR$/Logica/Docentes.py" />
         <option value="$PROJECT_DIR$/Logica/Carrera.py" />
         <option value="$PROJECT_DIR$/Logica/Cursos.py" />
@@ -119,20 +128,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoProgramadoPrincipiosProgra" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoProgramadoPrincipiosProgra" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Logica" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -140,7 +135,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+=======
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
   </component>
   <component name="RunManager" selected="Python.Estudiantes">
     <configuration default="false" name="MenuDelSistema" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -380,7 +379,7 @@
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496329" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -430,6 +429,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -454,6 +454,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
       <provider selected="true" editor-type-id="text-editor">
+=======
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -478,14 +480,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logica/Administrador.py">
+    <entry file="file://$PROJECT_DIR$/Logica/Administrador.py" />
+    <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="374">
           <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding />
@@ -496,10 +500,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Logica/Administrador.py" />
     <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -508,6 +517,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Logica/Administrador.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -533,6 +543,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Logica/Administrador.py">
+=======
+    <entry file="file://$PROJECT_DIR$/Logica/Administrador.py" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -542,6 +556,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Menu/MenuDelSistema.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -634,9 +649,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+=======
+        <state relative-caret-position="480">
+          <caret line="24" column="24" lean-forward="false" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+>>>>>>> 5c16c72f73e9d5955b3ab73e7defe4a12352a842
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Logica/Docentes.py" />
+    <entry file="file://$PROJECT_DIR$/Logica/Carrera.py" />
+    <entry file="file://$PROJECT_DIR$/Logica/Cursos.py" />
+    <entry file="file://$PROJECT_DIR$/Logica/Recintos.py" />
+    <entry file="file://$PROJECT_DIR$/Logica/Aulas.py" />
+    <entry file="file://$PROJECT_DIR$/Logica/Administrador.py" />
+    <entry file="file://$PROJECT_DIR$/Logica/Estudiantes.py" />
   </component>
 </project>

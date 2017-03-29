@@ -1,3 +1,4 @@
+import sys
 listaEstudiantes = []
 class Estudiante():
     def AgregarEstudiante (self):
@@ -26,8 +27,8 @@ def menu():
             Estudiante().AgregarEstudiante()
         elif ingresoOpcion == "2":
             Estudiante().EliminarEstudiante()
-        elif ingresoOpcion == "4":
+        elif ingresoOpcion == "3":
             print(listaEstudiantes)
         elif ingresoOpcion == "0":
-            break
+            sys.exit()
 menu()
