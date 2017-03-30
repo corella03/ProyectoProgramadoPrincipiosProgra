@@ -1,3 +1,4 @@
+import Logica.Carrera
 StudentList = []
 def AddStudent():
     nameEntry = input("Ingrese el Nombre del Estudiante:")
@@ -6,13 +7,15 @@ def AddStudent():
     addressEntry = input("Ingrese la Dirección donde vive el Estudiante:")
     phoneEntry = input("Ingrese el Número de Telefono del Estudiante:")
     emailEntry = input("Ingrese el email del Estudiante:")
-    import Logica.Carrera
-    StudentList.append(Logica.Carrera.Student().DataStudent(nameEntry,lastNameEntry,identificationCardEntry,addressEntry,
-    phoneEntry,emailEntry))
-    print(StudentList)
+    Student = Logica.Carrera.Student(nameEntry, lastNameEntry, identificationCardEntry, addressEntry, phoneEntry, emailEntry)
+    StudentList.append(Student)
+    print(StudentList[0].name)
 def DeleteStudent():
     enterStudentPosition = int(input("Ingrese el numero del estudiante que quiera eliminar:"))
     StudentList.remove(StudentList[enterStudentPosition])
+def ShowStudentList():
+    for student in StudentList:
+        print(student.name ,student.lastName,)
 def Menu():
     print("\033[;34m" + "\nSelecciona una opción\n"
      "\t1 - Agregar Estudiante\n"
@@ -30,7 +33,7 @@ def MenuOptions():
             DeleteStudent()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "3":
-            print(StudentList)
+            ShowStudentList()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "0":
             break
