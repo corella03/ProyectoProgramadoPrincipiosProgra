@@ -1,19 +1,20 @@
-import ClassLogic.StudentLogic
+from ClassLogic.StudentLogic import *
+from ClassLogic.CourseLogic import *
+from ClassLogic.CampusLogic import*
 def MenuOptions():
     while True:
         print("\033[;34m" + "\nSelecciona una opción\n"
         "\t1 - Opciones Estudiante.\n"
         "\t2 - Opciones Docentes.\n"
         "\t3 - Opciones Carreras.\n"
-        "\t4 - Opciones Carreras.\n"
-        "\t5 - Opciones Cursos.\n"
-        "\t6 - Opciones Recintos.\n"
-        "\t7 - Opciones Aulas.\n"
-        "\t8 - Opciones Horarios.\n"
-        "\t0 - Salir" + "\033[;23m")
+        "\t4 - Opciones Cursos.\n"
+        "\t5 - Opciones Recintos.\n"
+        "\t6 - Opciones Aulas.\n"
+        "\t7 - Opciones Horarios.\n"
+        "\t0 - Volver al Menú Principal" + "\033[;23m")
         optionsEntry = input("Ingrese la Opción a Escoger")
         if optionsEntry == "1":
-            ClassLogic.StudentLogic.StudentMenuOptions()
+            StudentMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "2":
             print("Estamos Trabando en esto :D")
@@ -22,18 +23,15 @@ def MenuOptions():
             print("Estamos Trabando en esto :D")
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "4":
-            print("Estamos Trabando en esto :D")
+            CourseMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "5":
-            print("Estamos Trabando en esto :D")
+            CampusMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "6":
             print("Estamos Trabando en esto :D")
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "7":
-            print("Estamos Trabando en esto :D")
-            input("\npulsa una tecla para continuar")
-        elif optionsEntry == "8":
             print("Estamos Trabando en esto :D")
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "0":

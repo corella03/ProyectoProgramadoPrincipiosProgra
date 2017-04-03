@@ -1,6 +1,6 @@
-import ClassMenu.AdministrativeMenu
-import ClassTypes.Administrator
-dataAdmin = ClassTypes.Administrator.admin("alonso","123")
+from ClassTypes.Administrator import *
+from ClassMenu.AdministrativeMenu import *
+dataAdmin = Admin("alonso","123")
 def Menu():
     print("==================================\n"
           " Gestion de Elementons Principales\n"
@@ -18,7 +18,7 @@ def DataManager():
     idEntry = input("Digite Usuario")
     passwordEntry = input("Digite Contra")
     if idEntry == dataAdmin.id and passwordEntry == dataAdmin.password:
-        ClassMenu.AdministrativeMenu.ChooseOption()
+        ChooseOption()
     else:
         print("Usuario o Contraseña Incorreta")
 DataManager()

@@ -1,5 +1,5 @@
-import ClassLogic.AdministratorLogic
-import ClassMenu.SystemMenu
+from ClassLogic.AdministratorLogic import *
+from ClassMenu.SystemMenu import *
 import sys
 def AdminMenu():
     print("\033[;34m" + "\nBienvenido Señor(a) \n"
@@ -8,20 +8,20 @@ def AdminMenu():
     "\t2 - Menú Administrativo\n"
     "\t3 - Menú Operativo\n"
     "\t4 - Menú de Reportes\n"
-    "\t0 - Salir\n" + "\033[;23m")
+    "\t0 - Volver al Menú del Sistema\n" + "\033[;23m")
 def ChooseOption():
     while True:
         # Llamamos al Menú
         AdminMenu()
         # Solicitamos al usuario ingresar una Opción
-        MenuOptions = input("Ingrese un número del Menú")
-        if MenuOptions == "1":
-            ClassLogic.AdministratorLogic.ChangePassword()
+        AdminMenuOptions = input("Ingrese un número del Menú")
+        if AdminMenuOptions == "1":
+            ChangePassword()
             input("\npulsa una tecla para continuar")
-        elif MenuOptions == "2":
-            ClassMenu.SystemMenu.MenuOptions()
+        elif AdminMenuOptions == "2":
+            MenuOptions()
             input("\npulsa una tecla para continuar")
-        elif MenuOptions == "0":
+        elif AdminMenuOptions == "0":
             sys.exit()
         else:
             print("")
