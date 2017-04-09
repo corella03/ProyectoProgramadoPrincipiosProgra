@@ -6,11 +6,17 @@ def AddCourse():
     newCourse = Course(nameEntry,codeEntry)
     courseList.append(newCourse)
 def DeleteCourse():
-    enterCoursePosition = int(input("Ingrese la posición del curso que quiera eliminar:"))
+    courseNumber = 0
+    for course in courseList:
+        courseNumber = courseNumber + 1
+        print("Número de Curso", courseNumber, " Nombre: ", course.courseName, " Código: ", course.courseCode)
+    enterCoursePosition = int(input("Ingrese la posición del curso que quiera Eliminar: "))
     courseList.remove(courseList[enterCoursePosition])
 def ShowCourseList():
+    courseNumber = 0
     for course in courseList:
-        print("Nombre", course.courseName, "Código",course.courseCode)
+        courseNumber = courseNumber + 1
+        print("Número de Curso: ",courseNumber," Nombre: ",course.courseName, " Código: ",course.courseCode)
 def ModifyCourse():
     enterCoursePosition = int(input("Ingrese el numero del Curso que quiera Modificar:"))
     for i in range(len(courseList)):
@@ -74,3 +80,4 @@ def CourseMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú")
+CourseMenuOptions()

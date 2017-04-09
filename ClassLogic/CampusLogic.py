@@ -7,11 +7,19 @@ def AddCampus():
     newCampus = Campus(nameEntry,addressEntry,codeEntry)
     campusList.append(newCampus)
 def DeleteCampus():
+    campusNumber = 0
+    for campus in campusList:
+        campusNumber = campusNumber + 1
+        print("Número de Campus: ", campusNumber, " Nombre: ", campus.campusName, " Dirección: ", campus.campusAddress,
+              " Código: ", campus.campusCode)
     enterCampusPosition = int(input("Ingrese la posición del Recinto que quiera eliminar:"))
     campusList.remove(campusList[enterCampusPosition])
 def ShowCampusList():
+    campusNumber = 0
     for campus in campusList:
-        print("Nombre:", campus.campusName,"Dirección:",campus.campusAddress ,"Código:",campus.campusCode)
+        campusNumber = campusNumber + 1
+        print("Número de Recinto: ",campusNumber," Nombre: ", campus.campusName," Dirección: ",campus.campusAddress ,
+              " Código: ",campus.campusCode)
 def ModifyCampus():
     enterCampusPosition = int(input("Ingrese el numero del Recinto que quiera Modificar:"))
     for i in range(len(campusList)):
