@@ -1,83 +1,90 @@
+import pickle
 from ClassTypes.Course import *
-courseList = []
+from pathlib import Path
+def GetCourseList():
+    myCourseFile = Path("..\Files\CampusFile.pickle")
+    if myCourseFile.is_file():
+        with open("..\Files\CampusFile.pickle", "rb") as courseFile:
+            courseList = pickle._load(courseFile)
+        return courseList
+    return []
+def SetCourseList(courseList):
+    with open("..\Files\CampusFile.pickle", "wb") as courseFile:
+        pickle._dump(courseList,courseFile)
 def AddCourse():
-    nameEntry = input("Ingrese el nombre del Curso:")
-    codeEntry = input("Ingrese el código del Curso")
+    nameEntry = input("Ingrese el Nombre del Curso: ")
+    codeEntry = input("Ingrese el Código del Curso: ")
     newCourse = Course(nameEntry,codeEntry)
+    courseList = GetCourseList()
     courseList.append(newCourse)
+    SetCourseList(courseList)
 def DeleteCourse():
     courseNumber = 0
+    courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso", courseNumber, " Nombre: ", course.courseName, " Código: ", course.courseCode)
-    enterCoursePosition = int(input("Ingrese la posición del curso que quiera Eliminar: "))
+        print("Número de Curso",courseNumber - 1, " Nombre: ",course.courseName, " Código: ",course.courseCode)
+    enterCoursePosition = int(input("\nIngrese la posición del Curso que quiera Eliminar: "))
     courseList.remove(courseList[enterCoursePosition])
+    SetCourseList(courseList)
 def ShowCourseList():
     courseNumber = 0
+    courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
         print("Número de Curso: ",courseNumber," Nombre: ",course.courseName, " Código: ",course.courseCode)
 def ModifyCourse():
-    enterCoursePosition = int(input("Ingrese el numero del Curso que quiera Modificar:"))
+    enterCoursePosition = int(input("\nIngrese el numero del Curso que quiera Modificar: "))
+    courseList = GetCourseList()
     for i in range(len(courseList)):
-        if courseList[i] == courseList[enterCoursePosition]:
+        if i == enterCoursePosition:
             while True:
-                print("1- Para modificar el Nombre:\n"
-                      "2- Para modificar el Código:\n"
-                      "0- salir:")
-                optionsEntry = input("Ingrese la Opción a Escoger")
+                print("\t1...Modificar Nombre del Curso.", "\n",
+                      "\t2...Modificar Código del Curso.", "\n",
+                      "\t0...Salir.")
+                optionsEntry = input("Ingrese la Opción a Escoger: ")
                 if optionsEntry != "0":
-                    for course in courseList:
-                        if optionsEntry == "1":
-                            course.courseName = input("Ingrese nuevo nombre")
-                        elif optionsEntry == "2":
-                            course.courseCode = input("Ingrese nuevo Código")
-                        else:
-                            input("No has pulsado ninguna opción correcta...\n"
-                                  "Presione enter Para volver al Menú")
+                    if optionsEntry == "1":
+                        courseList[i].courseName = input("Ingrese nuevo Nombre: ")
+                    elif optionsEntry == "2":
+                        courseList[i].courseCode = input("Ingrese el nuevo Código: ")
+                    else:
+                        input("No has pulsado ninguna opción correcta...\n"
+                              "Presione una tecla para volver a las Opciones.")
                 else:
                     break
-                print("\033[;34mNombre:", course.courseName + "\033[;23m", "\033[;34mCódigo:", course.courseCode)
-def CreateFile():
-    courseFile = open("..\Files\Course.txt", "w")
-    courseFile.close()
-CreateFile()
-def WriteFile():
-    courseFile = open("..\Files\Course.txt", "a")
-    courseFile.write("")
-    courseFile.close()
-WriteFile()
-def ReadAsList():
-    courseFile = open("..\Files\Course.txt", "r")
-    lineas = courseFile.readlines()
-    print(lineas)
-    courseFile.close()
+                print("Nombre: ",courseList[i].courseName," Código: ", courseList[i].courseCode)
+    else:
+        print("La posición del Curso no existe.")
+    SetCourseList(courseList)
 def CourseMenu():
-    print("\033[;34m" + "\nSelecciona una opción\n"
-     "\t1 - Agregar Curso\n"
-     "\t2 - Eliminar Curso\n"
-     "\t3 - Ver Cursos\n"
-     "\t4 - Modificar Curso\n"
-     "\t0 - Volver al Menú Administrativo" + "\033[;23m")
+    print("\n========= SELECCIONE =========\n"
+          "========= UNA OPCION =========\n"
+          "\t1.. Agregar Curso.\n"
+          "\t2.. Eliminar Curso.\n"
+          "\t3.. Ver Cursos.\n"
+          "\t4.. Modificar Cursos.\n"
+          "\t0.. Volver al Menú Administrativo." + "\033[;23m")
 def CourseMenuOptions():
     while True:
         CourseMenu()
-        optionsEntry = input("Ingrese la Opción a Escoger")
+        optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             AddCourse()
-            input("\npulsa una tecla para continuar")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2":
             DeleteCourse()
-            input("\npulsa una tecla para continuar")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3":
             ShowCourseList()
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4":
             ModifyCourse()
-            input("\npulsa una tecla para continuar")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0":
             break
         else:
             print("")
             input("No has pulsado ninguna opción correcta...\n"
-                  "Presione enter Para volver al Menú")
+                  "Presione enter Para volver al Menú.")
 CourseMenuOptions()

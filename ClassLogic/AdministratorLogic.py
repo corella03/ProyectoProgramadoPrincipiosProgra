@@ -1,3 +1,4 @@
+import pickle
 from ClassTypes.Administrator import *
 dataAdmin = Admin("alonso", "123")
 def CreateFile():
