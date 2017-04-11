@@ -12,12 +12,19 @@ def SetStudentList(studentList):
     with open("..\Files\StudentFile.pickle","wb") as studentFile:
         pickle._dump(studentList, studentFile)
 def AddStudent():
+    domainStudent = '@est.utn.ac.cr'
     nameEntry = input("Ingrese el Nombre del Estudiante: ")
     lastNameEntry = input("Ingrese el Apellido del Estudiante: ")
     identificationCardEntry = input("Ingrese el número de Cédula del Estudiante: ")
     addressEntry = input("Ingrese la Dirección donde vive el Estudiante: ")
     phoneEntry = input("Ingrese el Número de Telefono del Estudiante: ")
-    emailEntry = input("Ingrese el Email del Estudiante: ")
+    while True:
+        emailEntry = input("Ingrese el Email del Estudiante: ")
+        if "@" in emailEntry:
+            print("Error al ingresar el correo vuelva a intentarlo.")
+        else:
+            emailEntry = emailEntry+domainStudent
+            break
     newStudent = Student(nameEntry, lastNameEntry, identificationCardEntry, addressEntry, phoneEntry, emailEntry)
     studentList = GetStudenList()
     studentList.append(newStudent)
@@ -84,7 +91,7 @@ def StudentMenu():
           "========= UNA OPCION =========\n"
           "\t1.. Agregar Estudiante\n"
           "\t2.. Eliminar Estudiante\n"
-          "\t3.. Ver Lista Estudianten"
+          "\t3.. Ver Lista Estudianten\n"
           "\t4.. Modificar Estudiante\n"
           "\t0.. Volver al Menú Administrativo ")
 def StudentMenuOptions():
@@ -109,4 +116,3 @@ def StudentMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-StudentMenuOptions()

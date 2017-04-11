@@ -1,4 +1,5 @@
 from ClassMenu.AdministrativeMenu import *
+from ClassLogic.AdministratorLogic import *
 import getpass
 #passwordEntry = input(getpass.getpass("Digite Contra\n--->"))
 def Menu():
@@ -17,7 +18,9 @@ def DataManager():
     Menu()
     idEntry = input("Digite Usuario\n--->")
     passwordEntry = input("Digite Contra\n--->")
-    if idEntry == dataAdmin.id and passwordEntry == dataAdmin.password:
+    administratorLogin = GetAdministratorLogin()
+    if idEntry == administratorLogin.id and passwordEntry == administratorLogin.password:
+        SetAdministratorLogin(administratorLogin)
         ChooseOption()
     else:
         print("Usuario o Contraseña Incorreta")

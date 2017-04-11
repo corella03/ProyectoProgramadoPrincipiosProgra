@@ -12,12 +12,19 @@ def SetTeacherList(teacherList):
     with open("..\Files\TeacherFile.pickle", "wb") as teacherFile:
         pickle._dump(teacherList, teacherFile)
 def AddTeacher():
-    nameEntry = str(input("Ingrese el Nombre del Docente  :"))
-    lastNameEntry = str(input("Ingrese el Apellido del Docente  :"))
-    identificationCardEntry = str(input("Ingrese el número de Cédula del Docente:"))
-    addressEntry = str(input("Ingrese el Lugar de Residencia del Docente  :"))
-    phoneEntry = str(input("Ingrese el Numero de telefono del Docente  :"))
-    emailEntry = str(input("Ingrese el Correo del Docente  :"))
+    domainTeacher = "@utn.ac.cr"
+    nameEntry = str(input("Ingrese el Nombre del Docente: "))
+    lastNameEntry = str(input("Ingrese el Apellido del Docente: "))
+    identificationCardEntry = str(input("Ingrese el número de Cédula del Docente: "))
+    addressEntry = str(input("Ingrese el Lugar de Residencia del Docente: "))
+    phoneEntry = str(input("Ingrese el Numero de telefono del Docente: "))
+    while True:
+        emailEntry = str(input("Ingrese el Correo del Docente: "))
+        if "@" in emailEntry:
+            print("Error al ingresar el correo vuelva a intentarlo.")
+        else:
+            emailEntry = emailEntry+domainTeacher
+            break
     newTeacher = Teacher(nameEntry,lastNameEntry,identificationCardEntry,addressEntry,phoneEntry,emailEntry)
     teacherList = GetTeacherList()
     teacherList.append(newTeacher)
@@ -79,8 +86,8 @@ def ModifyTeacher():
                 print("Nombre: ",teacherList[x].teacherName," Apellido: ",teacherList[x].teacherLastName," Cédula:",
                       teacherList[x].teacherIdentificationCard," Dirección: ",teacherList[x].teacherResidency," Numero de Telefono: ",
                       teacherList[x].teacherPhone," Email: ",teacherList[x].teacherEmail)
-        else:
-            print("La posición del Docente no existe.")
+    else:
+        print("La posición del Docente no existe.")
     SetTeacherList(teacherList)
 def TeacherMenu():
     print("\n========= SELECCIONE =========\n"
@@ -113,4 +120,3 @@ def TeacherMenuOption():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-TeacherMenuOption()

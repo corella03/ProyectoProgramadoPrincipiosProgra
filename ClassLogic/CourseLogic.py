@@ -32,7 +32,7 @@ def ShowCourseList():
     courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso: ",courseNumber," Nombre: ",course.courseName, " Código: ",course.courseCode)
+        print("Número de Curso: ",courseNumber - 1," Nombre: ",course.courseName, " Código: ",course.courseCode)
 def ModifyCourse():
     enterCoursePosition = int(input("\nIngrese el numero del Curso que quiera Modificar: "))
     courseList = GetCourseList()
@@ -54,8 +54,8 @@ def ModifyCourse():
                 else:
                     break
                 print("Nombre: ",courseList[i].courseName," Código: ", courseList[i].courseCode)
-    else:
-        print("La posición del Curso no existe.")
+        else:
+            print("La posición del Curso no existe.")
     SetCourseList(courseList)
 def CourseMenu():
     print("\n========= SELECCIONE =========\n"
@@ -87,4 +87,3 @@ def CourseMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-CourseMenuOptions()

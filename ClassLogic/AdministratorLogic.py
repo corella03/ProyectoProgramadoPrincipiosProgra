@@ -1,53 +1,20 @@
 import pickle
+from pathlib import Path
 from ClassTypes.Administrator import *
-dataAdmin = Admin("alonso", "123")
-def CreateFile():
-    adminFile = open("..\Files\Admin.txt", "w")
-    adminFile.close()
+def GetAdministratorLogin():
+    myAdministratorLogin = Path("..\Files\AdministratorFile.pickle")
+    if myAdministratorLogin.is_file():
+        with open("..\Files\AdministratorFile.pickle", "rb") as administratorFile:
+            administratorLogin = pickle._load(administratorFile)
+        return administratorLogin
+    return[]
+def SetAdministratorLogin(administratorLogin):
+    with open("..\Files\AdministratorFile.pickle", "wb") as administratorFile:
+        pickle._dump(administratorLogin, administratorFile)
 def ChangePassword():
-    adminFile = open("..\Files\Admin.txt", "a")
+    administratorLogin = Admin("karlonso", "123")
+    administratorLogin = GetAdministratorLogin()
     changePasswordEntry = input("Ingrese la nueva contraseña:")
-    dataAdmin.password = changePasswordEntry
-    adminFile.write(dataAdmin.password)
-    adminFile.write("\n")
-    adminFile.write(dataAdmin.id)
-    adminFile.close()
+    administratorLogin.password = changePasswordEntry
+    SetAdministratorLogin(administratorLogin)
     print("Tu Contraseña Ha siado Cambiada")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    '''
-def CreateFile():
-    adminFile = open("..\Files\Admin.txt", "w")
-    adminFile.close()
-CreateFile()
-def WriteFile():
-    adminFile = open("..\Files\Admin.txt", "a")
-    adminFile.write("lol")
-    adminFile.close()
-WriteFile()
-def ReadAsList():
-    adminFile = open("..\Files\Admin.txt", "r")
-    lineas = adminFile.readlines()
-    print(lineas)
-    adminFile.close()
-    '''

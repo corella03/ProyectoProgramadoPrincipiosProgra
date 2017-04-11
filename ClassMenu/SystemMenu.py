@@ -2,6 +2,9 @@ from ClassLogic.StudentLogic import *
 from ClassLogic.CourseLogic import *
 from ClassLogic.CampusLogic import*
 from ClassLogic.TeacherLogic import *
+from ClassLogic.CareerLogic import *
+from ClassLogic.ClassroomsLogic import *
+from ClassLogic.ClassScheduleLogic import *
 def MenuOptions():
     while True:
         print("\033[;34m" + "\nSelecciona una opción\n"
@@ -21,7 +24,7 @@ def MenuOptions():
             TeacherMenuOption()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "3":
-            print("Estamos Trabando en esto :D")
+            CareerMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "4":
             CourseMenuOptions()
@@ -30,10 +33,10 @@ def MenuOptions():
             CampusMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "6":
-            print("Estamos Trabando en esto :D")
+            ClassRoomsMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "7":
-            print("Estamos Trabando en esto :D")
+            ClassScheduleMenuOptions()
             input("\npulsa una tecla para continuar")
         elif optionsEntry == "0":
             break
