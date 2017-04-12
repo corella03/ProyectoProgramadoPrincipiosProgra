@@ -32,7 +32,7 @@ def ShowCourseList():
     courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso: ",courseNumber - 1," Nombre: ",course.courseName, " Código: ",course.courseCode," Cursos de la Carrera: ",
+        print("Número de Curso: ",courseNumber - 1," Nombre: ",course.courseName, " Código: ",course.courseCode," Recinto de la Carrera: ",
               course.campusList, " Aulas de los Cursos: ",course.classRoomsList," Horarios de los Cursos: ",course.classScheduleList,
               " Docentes de los Cursos: ",course.teacherList," Estudiantes de los Cursos: ",course.studentList)
 def ModifyCourse():
@@ -89,4 +89,3 @@ def CourseMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-CourseMenuOptions()

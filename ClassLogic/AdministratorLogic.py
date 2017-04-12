@@ -12,8 +12,8 @@ def SetAdministratorLogin(administratorLogin):
     with open("..\Files\AdministratorFile.pickle", "wb") as administratorFile:
         pickle._dump(administratorLogin, administratorFile)
 def ChangePassword():
-    administratorLogin = Admin("karlonso", "123")
     administratorLogin = GetAdministratorLogin()
+    administratorLogin = Admin("karlonso", "12345")
     changePasswordEntry = input("Ingrese la nueva contraseña:")
     administratorLogin.password = changePasswordEntry
     SetAdministratorLogin(administratorLogin)

@@ -14,8 +14,8 @@ def SetClassRoomsList(classRoomsList):
 def AddClassRooms():
     codeEntry= input("Ingrese el Código del Aula: ")
     campusBelongsEntry = input("Ingrese el Campus en el que Pertenece: ")
-    newClassRooms= Classrooms (campusBelongsEntry, codeEntry)
-    classRoomsList= GetClassRoomsList()
+    newClassRooms = Classrooms(codeEntry,campusBelongsEntry)
+    classRoomsList = GetClassRoomsList()
     classRoomsList.append(newClassRooms)
     SetClassRoomsList(classRoomsList)
 def DeleteClassRooms():
@@ -23,7 +23,7 @@ def DeleteClassRooms():
     classRoomsList= GetClassRoomsList()
     for classRooms in classRoomsList:
         classRoomsNumber = classRoomsNumber + 1
-        print("Número de Aula: ", classRoomsNumber - 1, " Código ", classRooms.classroomsCode,
+        print("Número de Aula: ", classRoomsNumber - 1, " Código ", classRooms.classRoomsCode,
               " Recinto donde se ubica el Aula: ", classRooms.classroomsCampusBelongs)
     enterClassRoomsPosition= int (input("\nIngrese la posición del Aula que quiera Eliminar :"))
     classRoomsList.remove(classRoomsList[enterClassRoomsPosition])
@@ -33,7 +33,7 @@ def ShowCareerList():
     classRoomsList = GetClassRoomsList()
     for classRooms in classRoomsList:
         classRoomsNumber = classRoomsNumber + 1
-        print("Número de Aula: ", classRoomsNumber - 1, " Código ", classRooms.classroomsCode,
+        print("Número de Aula: ", classRoomsNumber - 1, " Código ", classRooms.classRoomsCode,
               " Recinto donde se ubica el Aula: ", classRooms.classroomsCampusBelongs)
 def ModifyClassRooms():
     enterClassRoomsPosition= int(input("\nIngrese el Aula que quiere Modificar: "))
@@ -41,22 +41,22 @@ def ModifyClassRooms():
     for i in range (len(classRoomsList)):
         if i == enterClassRoomsPosition:
             while True :
-                print(" Modificar Código del Aula","\n",
-                      "Modificar Lugar donde se encuentra el Aula ", "\n",
-                      "SALIR. ")
+                print("1.. Modificar Código del Aula: \n"
+                      "2.. Modificar Lugar donde se encuentra el Aula: \n"
+                      "0.. Salir")
                 optionsEntry= input(" Ingrese una Opcion: ")
                 if optionsEntry != "0" :
-                    if optionsEntry == "1" :
-                        classRoomsList[i].classRooms.classroomsCode = input("Ingrese un Nuevo Código: ")
-                    elif optionsEntry == "2" :
-                        classRoomsList [i].classRooms.classroomsCampusBelongs =input("Ingrese un Nuevo Recinto del aula: ")
+                    if optionsEntry == "1":
+                        classRoomsList[i].classRoomsCode = input("Ingrese un Nuevo Código: ")
+                    elif optionsEntry == "2":
+                        classRoomsList[i].classroomsCampusBelongs = input("Ingrese un Nuevo Recinto del aula: ")
                     else:
                         print("No has pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciónes")
                 else:
                     break
-                print("Código: ",classRoomsList[i].classroomsCode," Reciento que pertenece: ",
-                      classRoomsList[i].classroomsCampusBelongs )
+                print("Código: ",classRoomsList[i].classRoomsCode," Reciento que pertenece: ",
+                      classRoomsList[i].classroomsCampusBelongs)
         else:
             print("La posicion de la Carrera no existe.")
     SetClassRoomsList(classRoomsList)
@@ -90,4 +90,3 @@ def ClassRoomsMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-ClassRoomsMenuOptions()

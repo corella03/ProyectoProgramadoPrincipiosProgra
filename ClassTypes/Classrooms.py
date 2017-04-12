@@ -1,4 +1,4 @@
 class Classrooms():
     def __init__(self,codeEntry,campusBelongsEntry):
-        self.classroomsCode = codeEntry
+        self.classRoomsCode = codeEntry
         self.classroomsCampusBelongs = campusBelongsEntry

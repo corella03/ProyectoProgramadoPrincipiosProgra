@@ -3,3 +3,5 @@ class Career ():
         self.name = nameEntry
         self.code = codeEntry
         self.courseList = []
+        self.studentList = []
+        self.teacherList = []

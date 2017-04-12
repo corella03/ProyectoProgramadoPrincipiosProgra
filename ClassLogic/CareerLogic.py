@@ -34,16 +34,16 @@ def ShowCareerList():
     for career in careerList:
         careerNumber = careerNumber + 1
         print("Número de Carrera: ", careerNumber - 1, " Name: ", career.name, " Código: ", career.code," Cursos de la Carrera: ",
-              career.courseList)
+              career.courseList," Estudiantes de la Carrera",career.studentList," Docentes de laCarrera: ",career.teacherList)
 def ModifyCareer():
     enterCareerPosition= int(input("\nIngrese la Carrera que quiere Modificar: "))
     careerList= GetCareerList()
     for i in range (len(careerList)):
         if i == enterCareerPosition:
             while True :
-                print(" Modificar Nombre de la Carrera","\n",
-                      "Modificar Código de la Carrerra", "\n",
-                      "SALIR. ")
+                print("1.. Modificar Nombre de la Carrera: \n",
+                      "2.. Modificar Código de la Carrerra: \n",
+                      "0.. Salir:  ")
                 optionsEntry= input(" Ingrese una Opcion: ")
                 if optionsEntry != "0" :
                     if optionsEntry == "1" :

@@ -15,9 +15,9 @@ def AddClassRoomsToCourses():
                         classRoomsList = GetClassRoomsList()
                         codeList = []
                         for j in range(len(classRoomsList)):
-                            codeList.append(classRoomsList[j].classroomsCode)
+                            codeList.append(classRoomsList[j].classRoomsCode)
                             codeList.append(courseList[j].courseCode)
-                            print("Código de Aula: ",classRoomsList[j].classroomsCode," Recinto donde Pertenezca: ",
+                            print("Código de Aula: ",classRoomsList[j].classRoomsCode," Recinto donde Pertenezca: ",
                                   classRoomsList[j].classroomsCampusBelongs)
                         addCode = input("ingrese codigo")
                         for o in codeList:
@@ -64,4 +64,3 @@ def ClassRoomsToCoursesMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-ClassRoomsToCoursesMenuOptions()

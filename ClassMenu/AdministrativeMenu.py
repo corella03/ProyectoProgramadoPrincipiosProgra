@@ -1,5 +1,6 @@
 from ClassLogic.AdministratorLogic import *
 from ClassMenu.SystemMenu import *
+from ClassMenu.OperatingMenu import *
 def AdminMenu():
     print("\033[;34m" + "\nBienvenido Señor(a) \n"
     "Seleccione una Opción\n"
@@ -19,6 +20,9 @@ def ChooseOption():
             input("\npulsa una tecla para continuar")
         elif AdminMenuOptions == "2":
             MenuOptions()
+            input("\npulsa una tecla para continuar")
+        elif AdminMenuOptions == "3":
+            OperatingMenuOptions()
             input("\npulsa una tecla para continuar")
         elif AdminMenuOptions == "0":
             break

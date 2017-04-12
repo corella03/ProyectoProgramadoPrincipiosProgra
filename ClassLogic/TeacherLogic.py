@@ -30,23 +30,21 @@ def AddTeacher():
     teacherList.append(newTeacher)
     SetTeacherList(teacherList)
 def DeleteTeacher():
-    option = input("Desea eliminar un Docente ? si/no:")
-    if option == "si":
-        teacherNumber = 0
-        teacherList = GetTeacherList()
-        for teacher in teacherList:
-            print("Número del Docente:",teacherNumber - 1,"Nombre del  Docente", teacher.teacherName, "Apellido del Docente ", teacher.teacherLastName,
-                  "Número de Cédula del Docente",
-                  teacher.teacherIdentificationCard, "Residencia del Docente", teacher.teacherResidency,
-                  "Telefono del Docente", teacher.teacherPhone, "Correo del Docente", teacher.teacherEmail)
-        deleteTeacher = int(input("Ingrese el número que desea eliminar :"))
-        teacherList.remove(teacherList[deleteTeacher])
-        SetTeacherList(teacherList)
-    else:
-        print("Vuelva a las opciones anteriores")
+    teacherNumber = 0
+    teacherList = GetTeacherList()
+    for teacher in teacherList:
+        teacherNumber = teacherNumber + 1
+        print("Número del Docente:",teacherNumber - 1,"Nombre del  Docente", teacher.teacherName, "Apellido del Docente ", teacher.teacherLastName,
+              "Número de Cédula del Docente",
+              teacher.teacherIdentificationCard, "Residencia del Docente", teacher.teacherResidency,
+              "Telefono del Docente", teacher.teacherPhone, "Correo del Docente", teacher.teacherEmail)
+    deleteTeacher = int(input("Ingrese el número que desea eliminar :"))
+    teacherList.remove(teacherList[deleteTeacher])
+    SetTeacherList(teacherList)
 def ShowTeacherList():
     teacherNumber = 0
     teacherList = GetTeacherList()
+    teacherNumber = teacherNumber + 1
     for teacher in teacherList:
         print("Número del Docente:",teacherNumber - 1,"Nombre del  Docente", teacher.teacherName, "Apellido del Docente ", teacher.teacherLastName, "Número de Cédula del Docente",
               teacher.teacherIdentificationCard, "Residencia del Docente", teacher.teacherResidency,
@@ -120,4 +118,3 @@ def TeacherMenuOption():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-TeacherMenuOption()

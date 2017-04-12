@@ -1,27 +1,28 @@
 from ClassLogic.CareerLogic import *
-from ClassLogic.CourseLogic import *
-def AddCourseToCareer():
+from ClassLogic.StudentLogic import *
+def AddStudentToCareer():
     ShowCareerList()
-    enterCareerPosition = int(input("\nIngrese la Carrera que quiere Agregar Cursos: "))
+    enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Agregar a la carrera: "))
     careerList = GetCareerList()
     for i in range(len(careerList)):
         if i == enterCareerPosition:
             while True:
-                print("1.. Asignar un Curso a una Carrera.\n"
+                print("1.. Asignar un Estudiante a una Carrera.\n"
                       "0.. Salir.")
                 optionsEntry = input(" Ingrese una Opcion: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
-                        courseList = GetCourseList()
+                        studentList = GetStudentList()
                         codeList = []
-                        for j in range(len(courseList)):
-                            codeList.append(courseList[j].courseCode)
-                            print("Nombre del Curso: ",courseList[j].courseName," Código del Curso: ",courseList[j].courseCode)
-                        addCode = input("ingrese codigo")
+                        for j in range(len(studentList)):
+                            codeList.append(studentList[j].identificationCard)
+                            print("Nombre del Curso: ",studentList[j].name,
+                                  " Cédula: ",studentList[j].identificationCard)
+                        addCode = input(" Ingrese Cédula: ")
                         for o in codeList:
                             if o in addCode:
-                                careerList[i].courseList.append(addCode)
-                                print(careerList[i].courseList)
+                                careerList[i].studentList.append(addCode)
+                                print(careerList[i].studentList)
                         SetCareerList(careerList)
                     elif optionsEntry == "0":
                         break
@@ -30,32 +31,32 @@ def AddCourseToCareer():
                               "Presione una tecla para volver a las Opciónes")
                 else:
                     break
-def DeleteCourseToCareer():
+def DeleteStudentToCareer():
     ShowCareerList()
-    enterCareerPosition = int(input("\nIngrese la Carrera que quiere Eliminar Cursos: "))
+    enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Eliminar de la Carrera: "))
     careerList = GetCareerList()
     for i in range(len(careerList)):
         if i == enterCareerPosition:
-            deleteCode = input("Ingrese el codigo que desea eliminar")
+            deleteCode = input(" Ingrese la Cédula que desea eliminar: ")
             careerList[i].courseList.remove(deleteCode)
         else:
-            print("No existe ese Curso")
+            print("No existe el Estudiante")
     SetCareerList(careerList)
-def CourseToCarrerMenu():
+def StudentToCarrerMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Asignar un Curso a una Carrera.\n"
-          "\t2.. Desasignar un Cursos a una Carrera.\n"
+          "\t1.. Asignar un Estudiante a una Carrera.\n"
+          "\t2.. Desasignar un Estudiante una Carrera.\n"
           "\t0.. Volver al Menú Operativo.")
-def CourseToCarrerMenuOptions():
+def StudentToCarrerMenuOptions():
     while True:
-        CourseToCarrerMenu()
+        StudentToCarrerMenu()
         optionsEntry = input("Ingrese la opción a Escoger: ")
         if optionsEntry== "1" :
-            AddCourseToCareer()
+            AddStudentToCareer()
             input("Pulsa una tecla para continuar.")
         elif optionsEntry == "2" :
-            DeleteCourseToCareer()
+            DeleteStudentToCareer()
         elif optionsEntry == "0" :
             break
         else:
