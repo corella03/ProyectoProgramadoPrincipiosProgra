@@ -1,5 +1,5 @@
 import pickle
-from ClassTypes.Classrooms import *
+from ClassTypes.ClassRooms import *
 from pathlib import Path
 def GetClassRoomsList() :
     myClassRoomsFile = Path ("..\Files\ClassRoomsFile.pickle")

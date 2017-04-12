@@ -2,14 +2,14 @@ import pickle
 from ClassTypes.Course import *
 from pathlib import Path
 def GetCourseList():
-    myCourseFile = Path("..\Files\CampusFile.pickle")
+    myCourseFile = Path("..\Files\CourseFile.pickle")
     if myCourseFile.is_file():
-        with open("..\Files\CampusFile.pickle", "rb") as courseFile:
+        with open("..\Files\CourseFile.pickle", "rb") as courseFile:
             courseList = pickle._load(courseFile)
         return courseList
     return []
 def SetCourseList(courseList):
-    with open("..\Files\CampusFile.pickle", "wb") as courseFile:
+    with open("..\Files\CourseFile.pickle", "wb") as courseFile:
         pickle._dump(courseList,courseFile)
 def AddCourse():
     nameEntry = input("Ingrese el Nombre del Curso: ")
@@ -32,7 +32,9 @@ def ShowCourseList():
     courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso: ",courseNumber - 1," Nombre: ",course.courseName, " Código: ",course.courseCode)
+        print("Número de Curso: ",courseNumber - 1," Nombre: ",course.courseName, " Código: ",course.courseCode," Cursos de la Carrera: ",
+              course.campusList, " Aulas de los Cursos: ",course.classRoomsList," Horarios de los Cursos: ",course.classScheduleList,
+              " Docentes de los Cursos: ",course.teacherList," Estudiantes de los Cursos: ",course.studentList)
 def ModifyCourse():
     enterCoursePosition = int(input("\nIngrese el numero del Curso que quiera Modificar: "))
     courseList = GetCourseList()
@@ -87,3 +89,4 @@ def CourseMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
+CourseMenuOptions()

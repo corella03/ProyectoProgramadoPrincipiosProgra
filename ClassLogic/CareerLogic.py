@@ -1,6 +1,7 @@
 import pickle
 from ClassTypes.Career import *
 from pathlib import Path
+from ClassTypes.Career import Career
 def GetCareerList() :
     myCareerFile = Path ("..\Files\CareerFile.pickle")
     if myCareerFile.is_file():
@@ -14,7 +15,7 @@ def SetCareerList(careerList):
 def AddCareer():
     nameEntry = input("Ingrese el Nombre de la Carerra: ")
     codeEntry = input("Ingrese el Código de la Carrera: ")
-    newCareer= Career (nameEntry, codeEntry)
+    newCareer = Career (nameEntry, codeEntry)
     careerList = GetCareerList()
     careerList.append(newCareer)
     SetCareerList(careerList)
@@ -32,7 +33,8 @@ def ShowCareerList():
     careerList = GetCareerList()
     for career in careerList:
         careerNumber = careerNumber + 1
-        print("Número de Carrera: ", careerNumber - 1, " Name: ", career.name, " Código: ", career.code)
+        print("Número de Carrera: ", careerNumber - 1, " Name: ", career.name, " Código: ", career.code," Cursos de la Carrera: ",
+              career.courseList)
 def ModifyCareer():
     enterCareerPosition= int(input("\nIngrese la Carrera que quiere Modificar: "))
     careerList= GetCareerList()
