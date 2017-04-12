@@ -90,3 +90,4 @@ def ClassRoomsMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+ClassRoomsMenuOptions()

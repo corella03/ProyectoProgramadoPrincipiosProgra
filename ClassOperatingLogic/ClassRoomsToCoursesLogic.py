@@ -1,28 +1,29 @@
 from ClassLogic.CourseLogic import *
 from ClassLogic.ClassroomsLogic import *
-def AddCampusToCourses():
+def AddClassRoomsToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Agregarle Recintos: "))
+    enterCoursePosition = int(input("\nIngrese el Curso que quiere Asignarle un Aula: "))
     courseList = GetCourseList()
     for i in range(len(courseList)):
         if i == enterCoursePosition:
             while True:
-                print("1.. Asignar un Recinto a un Curso.\n"
+                print("1.. Asignar un Aula a un Curso.\n"
                       "0.. Salir.")
                 optionsEntry = input(" Ingrese una Opcion: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
-                        campusList = GetCampusList()
+                        classRoomsList = GetClassRoomsList()
                         codeList = []
-                        for j in range(len(campusList)):
-                            codeList.append(campusList[j].campusCode)
+                        for j in range(len(classRoomsList)):
+                            codeList.append(classRoomsList[j].classroomsCode)
                             codeList.append(courseList[j].courseCode)
-                            print("Nombre del Recinto: ",campusList[j].campusName," Código del Recinto: ",campusList[j].campusCode)
+                            print("Código de Aula: ",classRoomsList[j].classroomsCode," Recinto donde Pertenezca: ",
+                                  classRoomsList[j].classroomsCampusBelongs)
                         addCode = input("ingrese codigo")
                         for o in codeList:
                             if o in addCode:
-                                courseList[i].campusList.append(addCode)
-                                print(courseList[i].campusList)
+                                courseList[i].classRoomsList.append(addCode)
+                                print(courseList[i].classRoomsList)
                         SetCourseList(courseList)
                     elif optionsEntry == "0":
                         break
@@ -31,36 +32,36 @@ def AddCampusToCourses():
                               "Presione una tecla para volver a las Opciónes")
                 else:
                     break
-def DeleteCampusToCourse():
+def DeletClassRoomsToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle Recintos: "))
+    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle un Aula: "))
     courseList = GetCourseList()
     for i in range(len(courseList)):
         if i == enterCoursePosition:
             deleteCode = input("Ingrese el codigo que desea eliminar")
-            courseList[i].campusList.remove(deleteCode)
+            courseList[i].classRoomsList.remove(deleteCode)
         else:
             print("No existe ese Curso")
     SetCourseList(courseList)
-def CampusToCourseMenu():
+def ClassRoomsToCoursesMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Asignar un Recinto a un Curso.\n"
-          "\t2.. Desasignar un Recinto a un Curso.\n"
+          "\t1.. Asignar un Aula a un Curso.\n"
+          "\t2.. Desasignar un Aula a un Curso.\n"
           "\t0.. Volver al Menú Operativo.")
-def CampusToCourseMenuOptions():
+def ClassRoomsToCoursesMenuOptions():
     while True:
-        CampusToCourseMenu()
+        ClassRoomsToCoursesMenu()
         optionsEntry = input("Ingrese la opción a Escoger: ")
         if optionsEntry== "1" :
-            AddCampusToCourses()
+            AddClassRoomsToCourses()
             input("Pulsa una tecla para continuar.")
         elif optionsEntry == "2" :
-            DeleteCampusToCourse()
+            DeletClassRoomsToCourses()
         elif optionsEntry == "0" :
             break
         else:
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-CampusToCourseMenuOptions()
+ClassRoomsToCoursesMenuOptions()

@@ -1,29 +1,29 @@
 from ClassLogic.CourseLogic import *
-from ClassLogic.TeacherLogic import *
-def AddTeacherLogicToCourses():
+from ClassLogic.ClassroomsLogic import *
+def AddClassRoomsToCourses():
     ShowCourseList()
     enterCoursePosition = int(input("\nIngrese el Curso que quiere Asignarle un Aula: "))
     courseList = GetCourseList()
     for i in range(len(courseList)):
         if i == enterCoursePosition:
             while True:
-                print("1.. Asignar un Docente a un Curso.\n"
+                print("1.. Asignar un Aula a un Curso.\n"
                       "0.. Salir.")
                 optionsEntry = input(" Ingrese una Opcion: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
-                        teacherList = GetTeacherList()
+                        classRoomsList = GetClassRoomsList()
                         codeList = []
-                        for j in range(len(teacherList)):
-                            codeList.append(teacherList[j].teacherIdentificationCard)
+                        for j in range(len(classRoomsList)):
+                            codeList.append(classRoomsList[j].classroomsCode)
                             codeList.append(courseList[j].courseCode)
-                            print("Nombre del Docente: ",teacherList[j].teacherName," Cédula del Docente: ",
-                                  teacherList[j].teacherIdentificationCard)
-                        addCode = input("ingrese Cédula: ")
+                            print("Código de Aula: ",classRoomsList[j].classroomsCode," Recinto donde Pertenezca: ",
+                                  classRoomsList[j].classroomsCampusBelongs)
+                        addCode = input("ingrese codigo")
                         for o in codeList:
                             if o in addCode:
-                                courseList[i].teacherList.append(addCode)
-                                print(courseList[i].teacherList)
+                                courseList[i].classRoomsList.append(addCode)
+                                print(courseList[i].classRoomsList)
                         SetCourseList(courseList)
                     elif optionsEntry == "0":
                         break
@@ -32,36 +32,36 @@ def AddTeacherLogicToCourses():
                               "Presione una tecla para volver a las Opciónes")
                 else:
                     break
-def DeleteTeacherLogicToCourses():
+def DeleteClassRoomsToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle un Docente: "))
+    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle un Aula: "))
     courseList = GetCourseList()
     for i in range(len(courseList)):
         if i == enterCoursePosition:
             deleteCode = input("Ingrese el codigo que desea eliminar")
-            courseList[i].teacherList.remove(deleteCode)
+            courseList[i].classRoomsList.remove(deleteCode)
         else:
             print("No existe ese Curso")
     SetCourseList(courseList)
-def TeacherLogicToCoursesMenu():
+def ClassRoomsToCoursesMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Asignar un Docente a un Curso.\n"
-          "\t2.. Desasignar un Docente a un Curso.\n"
+          "\t1.. Asignar un Aula a un Curso.\n"
+          "\t2.. Desasignar un Aula a un Curso.\n"
           "\t0.. Volver al Menú Operativo.")
-def TeacherLogicToCoursesMenuOptions():
+def ClassRoomsToCoursesMenuOptions():
     while True:
-        TeacherLogicToCoursesMenu()
+        ClassRoomsToCoursesMenu()
         optionsEntry = input("Ingrese la opción a Escoger: ")
         if optionsEntry== "1" :
-            AddTeacherLogicToCourses()
+            AddClassRoomsToCourses()
             input("Pulsa una tecla para continuar.")
         elif optionsEntry == "2" :
-            DeleteTeacherLogicToCourses()
+            DeleteClassRoomsToCourses()
         elif optionsEntry == "0" :
             break
         else:
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-TeacherLogicToCoursesMenuOptions()
+ClassRoomsToCoursesMenuOptions()

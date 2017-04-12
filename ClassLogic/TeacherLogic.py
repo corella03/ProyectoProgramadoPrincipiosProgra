@@ -120,3 +120,4 @@ def TeacherMenuOption():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
+TeacherMenuOption()
