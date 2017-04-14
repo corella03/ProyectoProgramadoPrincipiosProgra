@@ -1,5 +1,4 @@
 import pickle
-from ClassTypes.Career import *
 from pathlib import Path
 from ClassTypes.Career import Career
 def GetCareerList() :
@@ -33,11 +32,11 @@ def ShowCareerList():
     careerList = GetCareerList()
     for career in careerList:
         careerNumber = careerNumber + 1
-        print("Número de Carrera: ", careerNumber - 1, " Name: ", career.name, " Código: ", career.code," Cursos de la Carrera: ",
+        print("Número de Carrera: ", careerNumber - 1, " Nombre: ", career.name, " Código: ", career.code," Cursos de la Carrera: ",
               career.courseList," Estudiantes de la Carrera",career.studentList," Docentes de laCarrera: ",career.teacherList)
 def ModifyCareer():
     enterCareerPosition= int(input("\nIngrese la Carrera que quiere Modificar: "))
-    careerList= GetCareerList()
+    careerList = GetCareerList()
     for i in range (len(careerList)):
         if i == enterCareerPosition:
             while True :
@@ -47,9 +46,9 @@ def ModifyCareer():
                 optionsEntry= input(" Ingrese una Opcion: ")
                 if optionsEntry != "0" :
                     if optionsEntry == "1" :
-                        careerList[i].career.name = input("Ingrese un nuevo Nombre: ")
+                        careerList[i].name = input("Ingrese un nuevo Nombre: ")
                     elif optionsEntry == "2" :
-                        careerList [i].career.code = input("Ingrese un nuevo Código: ")
+                        careerList[i].code = input("Ingrese un nuevo Código: ")
                     else:
                         print("No has pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciónes")

@@ -16,7 +16,6 @@ def AddTeacherToCareer():
                         codeList = []
                         for j in range(len(teacherList)):
                             codeList.append(teacherList[j].teacherIdentificationCard)
-                            codeList.append(careerList[j].code)
                             print("Nombre del Docente: ", teacherList[j].teacherName, " Cédula del Docente: ",
                                   teacherList[j].teacherIdentificationCard)
                         addCode = input("ingrese Cédula: ")

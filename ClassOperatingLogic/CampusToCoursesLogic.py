@@ -16,7 +16,6 @@ def AddCampusToCourses():
                         codeList = []
                         for j in range(len(campusList)):
                             codeList.append(campusList[j].campusCode)
-                            codeList.append(courseList[j].courseCode)
                             print("Nombre del Recinto: ",campusList[j].campusName," Código del Recinto: ",campusList[j].campusCode)
                         addCode = input("ingrese codigo")
                         for o in codeList:

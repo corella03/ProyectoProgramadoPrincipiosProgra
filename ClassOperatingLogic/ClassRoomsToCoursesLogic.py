@@ -16,7 +16,6 @@ def AddClassRoomsToCourses():
                         codeList = []
                         for j in range(len(classRoomsList)):
                             codeList.append(classRoomsList[j].classRoomsCode)
-                            codeList.append(courseList[j].courseCode)
                             print("Código de Aula: ",classRoomsList[j].classRoomsCode," Recinto donde Pertenezca: ",
                                   classRoomsList[j].classroomsCampusBelongs)
                         addCode = input("ingrese codigo")

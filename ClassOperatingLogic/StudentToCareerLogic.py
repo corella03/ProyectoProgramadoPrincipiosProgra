@@ -12,7 +12,7 @@ def AddStudentToCareer():
                 optionsEntry = input(" Ingrese una Opcion: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
-                        studentList = GetStudentList()
+                        studentList = GetStudenList()
                         codeList = []
                         for j in range(len(studentList)):
                             codeList.append(studentList[j].identificationCard)
@@ -52,12 +52,12 @@ def StudentToCarrerMenuOptions():
     while True:
         StudentToCarrerMenu()
         optionsEntry = input("Ingrese la opción a Escoger: ")
-        if optionsEntry== "1" :
+        if optionsEntry== "1":
             AddStudentToCareer()
             input("Pulsa una tecla para continuar.")
-        elif optionsEntry == "2" :
+        elif optionsEntry == "2":
             DeleteStudentToCareer()
-        elif optionsEntry == "0" :
+        elif optionsEntry == "0":
             break
         else:
             print("")

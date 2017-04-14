@@ -16,7 +16,6 @@ def AddStudenLogicToCourses():
                         codeList = []
                         for j in range(len(studentList)):
                             codeList.append(studentList[j].identificationCard)
-                            codeList.append(courseList[j].courseCode)
                             print("Nombre del Estudiante: ",studentList[j].name,
                                   " Cédula : ", studentList[j].identificationCard)
                         addCode = input(" Ingrese Cédula: ")
