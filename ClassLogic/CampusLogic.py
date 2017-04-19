@@ -15,6 +15,8 @@ def AddCampus():
     nameEntry = input("Ingrese el Nombre del Recinto: ")
     addressEntry = input("Ingrese la Dirección del Recinto: ")
     codeEntry = input("Ingrese el Código del Recinto: ")
+    codeEntry = codeEntry.upper()
+    print(codeEntry)
     newCampus = Campus(nameEntry,addressEntry,codeEntry)
     campusList = GetCampusList()
     campusList.append(newCampus)
@@ -54,6 +56,7 @@ def ModifyCampus():
                         campusList[i].campusAddress = input("Ingrese la nueva Dirección: ")
                     elif optionsEntry == "3":
                         campusList[i].campusCode = input("Ingrese el nuevo Código: ")
+                        campusList[i].campusCode = campusList[i].campusCode.upper
                     else:
                         input("No has pulsado ninguna opción correcta...\n"
                                   "Presione una tecla para volver a las Opciones.")

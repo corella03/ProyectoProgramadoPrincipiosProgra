@@ -16,9 +16,9 @@ def Report1():
             if studentIdentificationCard == careerList[i].studentList[j]:
                 studentExist = True
                 print("El Estudiante:", studentIdentificationCard," Pertenece a la Carrera: ",careerList[i].name)
-                print(time.strftime('%d %b %y'))
-                print(time.strftime('%H:%M:%S'))
                 break
+    print(time.strftime('%d %b %y'))
+    print(time.strftime('%H:%M:%S'))
     if not studentExist:
         print("No existe el Estudiante.")
 def Report2():
@@ -43,9 +43,9 @@ def Report2():
                             for studentId in course.studentList:
                                 if studentId == studentIdentificationCard:
                                     print(course.courseName)
-                                    print(time.strftime('%d %b %y'))
-                                    print(time.strftime('%H:%M:%S'))
                 break
+    print(time.strftime('%d %b %y'))
+    print(time.strftime('%H:%M:%S'))
     if not studentExist:
         print("No existe el Estudiante.")
 def Report3():
@@ -70,9 +70,9 @@ def Report3():
                             for teacherId in course.teacherList:
                                 if teacherId == teacherIdentificationCard:
                                     print(course.courseName)
-                                    print(time.strftime('%d %b %y'))
-                                    print(time.strftime('%H:%M:%S'))
                 break
+    print(time.strftime('%d %b %y'))
+    print(time.strftime('%H:%M:%S'))
     if not teacherExist:
         print("No existe el Estudiante.")
 def Report4():
@@ -85,8 +85,8 @@ def Report4():
             for course in allCourse:
                 if courseId == course.courseCode:
                     print(" Curso", course.courseName)
-                    print(time.strftime('%d %b %y'))
-                    print(time.strftime('%H:%M:%S'))
+    print(time.strftime('%d %b %y'))
+    print(time.strftime('%H:%M:%S'))
 def Report5():
     careerList = GetCareerList()
     allCourse = GetCourseList()
@@ -97,8 +97,8 @@ def Report5():
             for course in allCourse:
                 if courseId == course.courseCode:
                     print(" Curso", course.courseName)
-                    print(time.strftime('%d %b %y'))
-                    print(time.strftime('%H:%M:%S'))
+    print(time.strftime('%d %b %y'))
+    print(time.strftime('%H:%M:%S'))
 def Report6():
     allCourse = GetCourseList()
     #devuelve lista ordenada por algo

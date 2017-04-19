@@ -26,7 +26,7 @@ def ChooseOption():
             OperatingMenuOptions()
             input("\npulsa una tecla para continuar")
         elif AdminMenuOptions == "4":
-            print("Estamos trabajando en esto")
+            ReportsMenuOptions()
         elif AdminMenuOptions == "0":
             break
         else:
