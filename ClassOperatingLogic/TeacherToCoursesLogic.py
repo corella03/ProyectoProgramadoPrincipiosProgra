@@ -21,9 +21,15 @@ def AddTeacherToCourses():
                         addCode = input("ingrese Cédula: ")
                         for o in codeList:
                             if o in addCode:
-                                courseList[i].teacherList.append(addCode)
-                                print(courseList[i].teacherList)
-                        SetCourseList(courseList)
+                                for k in courseList[i].teacherList:
+                                    if k == addCode:
+                                        print("Este Docente ya está Registrado en este Curso.")
+                                        break
+                                else:
+                                    courseList[i].teacherList.append(addCode)
+                                    print(courseList[i].teacherList)
+                                    SetCourseList(courseList)
+                                    break
                     elif optionsEntry == "0":
                         break
                     else:
@@ -63,3 +69,4 @@ def TeacherToCoursesMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+TeacherToCoursesMenuOptions()

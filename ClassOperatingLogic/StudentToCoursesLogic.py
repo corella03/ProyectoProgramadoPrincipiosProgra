@@ -21,9 +21,15 @@ def AddStudenLogicToCourses():
                         addCode = input(" Ingrese Cédula: ")
                         for o in codeList:
                             if o in addCode:
-                                courseList[i].studentList.append(addCode)
-                                print(courseList[i].studentList)
-                        SetCourseList(courseList)
+                                for  k in courseList[i].studentList:
+                                    if k == addCode:
+                                        print("El Estudiante ya esta Matriculado en este Curso.")
+                                        break
+                                else:
+                                    courseList[i].studentList.append(addCode)
+                                    print(courseList[i].studentList)
+                                    SetCourseList(courseList)
+                                    break
                     elif optionsEntry == "0":
                         break
                     else:
@@ -39,8 +45,8 @@ def DeleteStudentToCourse():
         if i == enterCoursePosition:
             deleteCode = input("Ingrese la Cédula que desea eliminar: ")
             courseList[i].studentList.remove(deleteCode)
-        else:
-            print("No existe ese Curso")
+    else:
+        print("No existe ese Curso")
     SetCourseList(courseList)
 def StudentToCourseMenu():
     print("\n========= SELECCIONE =========\n"
@@ -63,3 +69,4 @@ def StudentToCourseMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+StudentToCourseMenuOptions()

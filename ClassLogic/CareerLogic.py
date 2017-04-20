@@ -12,12 +12,22 @@ def SetCareerList(careerList):
     with open("..\Files\CareerFile.pickle", "wb") as careerFile:
         pickle._dump(careerList, careerFile)
 def AddCareer():
-    nameEntry = input("Ingrese el Nombre de la Carerra: ")
-    codeEntry = input("Ingrese el Código de la Carrera: ")
-    newCareer = Career (nameEntry, codeEntry)
     careerList = GetCareerList()
-    careerList.append(newCareer)
-    SetCareerList(careerList)
+    codeEntry = input("Ingrese el Código de la Carrera: ")
+    codeEntry = codeEntry.upper()
+    allCodeToCareer = []
+    sorterCareerList = sorted(careerList, key=lambda career: career.code)
+    for codeCareer in sorterCareerList:
+        allCodeToCareer.append(codeCareer.code)
+    for i in range(len(allCodeToCareer)):
+        if allCodeToCareer[i] == codeEntry:
+            print("La Carrera ya existe")
+            break
+    else:
+        nameEntry = input("Ingrese el Nombre de la Carerra: ")
+        newCareer = Career (nameEntry, codeEntry)
+        careerList.append(newCareer)
+        SetCareerList(careerList)
 def DeleteCareer():
     careerNumber = 0
     careerList= GetCareerList()

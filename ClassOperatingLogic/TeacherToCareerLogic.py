@@ -21,9 +21,15 @@ def AddTeacherToCareer():
                         addCode = input("ingrese Cédula: ")
                         for o in codeList:
                             if o in addCode:
-                                careerList[i].teacherList.append(addCode)
-                                print(careerList[i].teacherList)
-                        SetCareerList(careerList)
+                                for k in careerList[i].teacherList:
+                                    if k == addCode:
+                                        print("Este Docente ya está Registrado en esta Carrera.")
+                                        break
+                                else:
+                                    careerList[i].teacherList.append(addCode)
+                                    print(careerList[i].teacherList)
+                                    SetCareerList(careerList)
+                                    break
                     elif optionsEntry == "0":
                         break
                     else:
@@ -39,8 +45,8 @@ def DeleteTeacherToCareer():
         if i == enterCareerPosition:
             deleteCode = input("Ingrese el cedula que desea eliminar")
             careerList[i].teacherList.remove(deleteCode)
-        else:
-            print("No existe ese Cedula")
+    else:
+        print("No existe ese Cedula")
     SetCareerList(careerList)
 def TeacherToCareerMenu():
     print("\n========= SELECCIONE =========\n"
@@ -63,3 +69,4 @@ def TeacherToCareerMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+TeacherToCareerMenuOptions()

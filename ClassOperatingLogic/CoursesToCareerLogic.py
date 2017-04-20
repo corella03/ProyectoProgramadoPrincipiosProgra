@@ -20,9 +20,14 @@ def AddCourseToCareer():
                         addCode = input("ingrese codigo")
                         for o in codeList:
                             if o in addCode:
-                                careerList[i].courseList.append(addCode)
-                                print(careerList[i].courseList)
-                        SetCareerList(careerList)
+                                for k in careerList[i].courseList:
+                                    if k == addCode:
+                                        print("El Curso ya está en esta Carrera.")
+                                        break
+                                else:
+                                    careerList[i].courseList.append(addCode)
+                                    print(careerList[i].courseList)
+                                    SetCareerList(careerList)
                     elif optionsEntry == "0":
                         break
                     else:
@@ -62,3 +67,4 @@ def CourseToCarrerMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+CourseToCarrerMenuOptions()

@@ -12,12 +12,22 @@ def SetCourseList(courseList):
     with open("..\Files\CourseFile.pickle", "wb") as courseFile:
         pickle._dump(courseList,courseFile)
 def AddCourse():
-    nameEntry = input("Ingrese el Nombre del Curso: ")
-    codeEntry = input("Ingrese el Código del Curso: ")
-    newCourse = Course(nameEntry,codeEntry)
     courseList = GetCourseList()
-    courseList.append(newCourse)
-    SetCourseList(courseList)
+    codeEntry = input("Ingrese el Código del Curso: ")
+    codeEntry = codeEntry.upper ()
+    allCodeToCourse = []
+    sorterCourseList = sorted(courseList, key=lambda course: course.courseCode)
+    for code in sorterCourseList:
+        allCodeToCourse.append(code.courseCode)
+    for i in range(len(allCodeToCourse)):
+        if allCodeToCourse[i] == codeEntry:
+            print("El Curso ya existe")
+            break
+    else:
+        nameEntry = input("Ingrese el Nombre del Curso: ")
+        newCourse = Course(nameEntry,codeEntry)
+        courseList.append(newCourse)
+        SetCourseList(courseList)
 def DeleteCourse():
     courseNumber = 0
     courseList = GetCourseList()
@@ -50,6 +60,7 @@ def ModifyCourse():
                         courseList[i].courseName = input("Ingrese nuevo Nombre: ")
                     elif optionsEntry == "2":
                         courseList[i].courseCode = input("Ingrese el nuevo Código: ")
+                        courseList[i].courseCode = courseList[i].courseCode.upper()
                     else:
                         input("No has pulsado ninguna opción correcta...\n"
                               "Presione una tecla para volver a las Opciones.")

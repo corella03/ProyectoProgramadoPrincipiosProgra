@@ -14,24 +14,31 @@ def SetStudentList(studentList):
         pickle._dump(studentList, studentFile)
 def AddStudent():
     studentList = GetStudenList()
-    domainStudent = '@est.utn.ac.cr'
-    nameEntry = input("Ingrese el Nombre del Estudiante: ")
-    lastNameEntry = input("Ingrese el Apellido del Estudiante: ")
     identificationCardEntry = input("Ingrese el número de Cédula del Estudiante: ")
-    if identificationCardEntry == studentList[0].identificationCard:
-        print(studentList[0].identificationCard,"Error")
-    addressEntry = input("Ingrese la Dirección donde vive el Estudiante: ")
-    phoneEntry = input("Ingrese el Número de Telefono del Estudiante: ")
-    while True:
-        emailEntry = input("Ingrese el Email del Estudiante: ")
-        if "@" in emailEntry:
-            print("Error al ingresar el correo vuelva a intentarlo.")
-        else:
-            emailEntry = emailEntry+domainStudent
+    domainStudent = '@est.utn.ac.cr'
+    allIdToStudent = []
+    sorterStudentList = sorted(studentList, key=lambda student: student.identificationCard)
+    for idStudent in sorterStudentList:
+        allIdToStudent.append(idStudent.identificationCard)
+    for j in range(len(allIdToStudent)):
+        if allIdToStudent[j] == identificationCardEntry:
+            print("El Estudiante ya existe.")
             break
-    newStudent = Student(nameEntry, lastNameEntry, identificationCardEntry, addressEntry, phoneEntry, emailEntry)
-    studentList.append(newStudent)
-    SetStudentList(studentList)
+    else:
+        nameEntry = input("Ingrese el Nombre del Estudiante: ")
+        lastNameEntry = input("Ingrese el Apellido del Estudiante: ")
+        addressEntry = input("Ingrese la Dirección donde vive el Estudiante: ")
+        phoneEntry = input("Ingrese el Número de Telefono del Estudiante: ")
+        while True:
+            emailEntry = input("Ingrese solo el nombre del Correo del Estudiante: ")
+            if "@" in emailEntry:
+                print("Error al ingresar el correo, ingrese solo el nombre sin el @...")
+            else:
+                emailEntry = emailEntry+domainStudent
+                break
+        newStudent = Student(nameEntry, lastNameEntry, identificationCardEntry, addressEntry, phoneEntry, emailEntry)
+        studentList.append(newStudent)
+        SetStudentList(studentList)
 def DeleteStudent():
     studentList = GetStudenList()
     ShowStudentList()
@@ -126,4 +133,3 @@ def StudentMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-StudentMenuOptions()

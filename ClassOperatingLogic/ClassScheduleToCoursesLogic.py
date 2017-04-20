@@ -22,9 +22,15 @@ def AddClassScheduleToCourses():
                         addCode = input("ingrese el Tipo:")
                         for o in codeList:
                             if o in addCode:
-                                courseList[i].classScheduleList.append(addCode)
-                                print(courseList[i].classScheduleList)
-                        SetCourseList(courseList)
+                                for k in courseList[i].classScheduleList:
+                                    if k == addCode:
+                                        print("El Horario ya se encuentra en esta Carrera.")
+                                        break
+                                else:
+                                    courseList[i].classScheduleList.append(addCode)
+                                    print(courseList[i].classScheduleList)
+                                    SetCourseList(courseList)
+                                    break
                     elif optionsEntry == "0":
                         break
                     else:
@@ -64,3 +70,4 @@ def ClassScheduleToCourseMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+ClassScheduleToCourseMenuOptions()

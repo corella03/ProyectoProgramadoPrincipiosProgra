@@ -12,15 +12,25 @@ def SetCampusList(campusList):
     with open("..\Files\CampusFile.pickle", "wb") as campusFile:
         pickle._dump(campusList, campusFile)
 def AddCampus():
-    nameEntry = input("Ingrese el Nombre del Recinto: ")
-    addressEntry = input("Ingrese la Dirección del Recinto: ")
+    campusList = GetCampusList()
     codeEntry = input("Ingrese el Código del Recinto: ")
     codeEntry = codeEntry.upper()
-    print(codeEntry)
-    newCampus = Campus(nameEntry,addressEntry,codeEntry)
-    campusList = GetCampusList()
-    campusList.append(newCampus)
-    SetCampusList(campusList)
+    allCodeToCampus = []
+    sorterCampusList = sorted(campusList, key=lambda campus: campus.campusCode)
+    for code in sorterCampusList:
+        allCodeToCampus.append(code.campusCode)
+    for j in range(len(allCodeToCampus)):
+        if allCodeToCampus[j] == codeEntry:
+            print("El Recinto ya existe")
+            break
+    else:
+        nameEntry = input("Ingrese el Nombre del Recinto: ")
+        addressEntry = input("Ingrese la Dirección del Recinto: ")
+        print(codeEntry)
+        newCampus = Campus(nameEntry,addressEntry,codeEntry)
+        campusList = GetCampusList()
+        campusList.append(newCampus)
+        SetCampusList(campusList)
 def DeleteCampus():
     campusNumber = 0
     campusList = GetCampusList()
@@ -56,7 +66,7 @@ def ModifyCampus():
                         campusList[i].campusAddress = input("Ingrese la nueva Dirección: ")
                     elif optionsEntry == "3":
                         campusList[i].campusCode = input("Ingrese el nuevo Código: ")
-                        campusList[i].campusCode = campusList[i].campusCode.upper
+                        campusList[i].campusCode = campusList[i].campusCode.upper()
                     else:
                         input("No has pulsado ninguna opción correcta...\n"
                                   "Presione una tecla para volver a las Opciones.")

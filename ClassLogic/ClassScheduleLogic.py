@@ -12,13 +12,23 @@ def SetClassScheduleList(classScheduleList):
     with open("..\Files\ClassScheduleFile.pickle", "wb") as classScheduleFile:
         pickle._dump(classScheduleList, classScheduleFile)
 def AddClassSchedule():
-    typeEntry = input("Ingrese el Tipo de Horario: ")
-    startOfScheduleEntry = input("Ingrese la Hora de Inicio: ")
-    endOfScheduleEntry = input("Ingrese la Horas de Salida: ")
-    newClassSchedule = ClassSchedule(typeEntry,startOfScheduleEntry,endOfScheduleEntry)
     classScheduleList = GetClassScheduleList()
-    classScheduleList.append(newClassSchedule)
-    SetClassScheduleList(classScheduleList)
+    typeEntry = input("Ingrese el Tipo de Horario: ")
+    allTypeClassSchedule = []
+    sorterClassScheduleList = sorted(classScheduleList, key=lambda classSchedule: classSchedule.scheduleType)
+    for type in sorterClassScheduleList:
+        allTypeClassSchedule.append(type.scheduleType)
+    for i in range(len(allTypeClassSchedule)):
+        if allTypeClassSchedule[i] == typeEntry:
+            print("El Horario ya existe")
+            break
+    else:
+        #Si es tarde validar Horas con Ifs
+        startOfScheduleEntry = input("Ingrese la Hora de Inicio: ")
+        endOfScheduleEntry = input("Ingrese la Horas de Salida: ")
+        newClassSchedule = ClassSchedule(typeEntry,startOfScheduleEntry,endOfScheduleEntry)
+        classScheduleList.append(newClassSchedule)
+        SetClassScheduleList(classScheduleList)
 def DeleteClassSchedule():
     classScheduleNumber = 0
     classScheduleList = GetClassScheduleList()

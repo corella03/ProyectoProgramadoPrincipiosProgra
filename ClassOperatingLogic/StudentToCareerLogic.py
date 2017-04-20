@@ -18,12 +18,18 @@ def AddStudentToCareer():
                             codeList.append(studentList[j].identificationCard)
                             print("Nombre del Curso: ",studentList[j].name,
                                   " Cédula: ",studentList[j].identificationCard)
+                        print(codeList)
                         addCode = input(" Ingrese Cédula: ")
                         for o in codeList:
                             if o in addCode:
-                                careerList[i].studentList.append(addCode)
-                                print(careerList[i].studentList)
-                        SetCareerList(careerList)
+                                for k in careerList[i].studentList:
+                                    if k == addCode:
+                                        print("El Estudiante ya esta Matriculado en es Carrera.")
+                                        break
+                                else:
+                                    careerList[i].studentList.append(addCode)
+                                    SetCareerList(careerList)
+                                    break
                     elif optionsEntry == "0":
                         break
                     else:
@@ -38,7 +44,7 @@ def DeleteStudentToCareer():
     for i in range(len(careerList)):
         if i == enterCareerPosition:
             deleteCode = input(" Ingrese la Cédula que desea eliminar: ")
-            careerList[i].courseList.remove(deleteCode)
+            careerList[i].studentList.remove(deleteCode)
         else:
             print("No existe el Estudiante")
     SetCareerList(careerList)
@@ -63,3 +69,4 @@ def StudentToCarrerMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+StudentToCarrerMenuOptions()

@@ -21,9 +21,15 @@ def AddClassRoomsToCourses():
                         addCode = input("ingrese codigo")
                         for o in codeList:
                             if o in addCode:
-                                courseList[i].classRoomsList.append(addCode)
-                                print(courseList[i].classRoomsList)
-                        SetCourseList(courseList)
+                                for k in courseList[i].classRoomsList:
+                                    if k == addCode:
+                                        print("El Aula ya se encuentra en este Curso.")
+                                        break
+                                else:
+                                    courseList[i].classRoomsList.append(addCode)
+                                    print(courseList[i].classRoomsList)
+                                    SetCourseList(courseList)
+                                    break
                     elif optionsEntry == "0":
                         break
                     else:
@@ -63,3 +69,4 @@ def ClassRoomsToCoursesMenuOptions():
             print("")
             input("No has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
+ClassRoomsToCoursesMenuOptions()
