@@ -49,68 +49,64 @@ def DeleteStudent():
             studentList.remove(studentList[int(enterStudentPosition)])
             break
         else:
-            print("Datos inválidos intente de nuevo")
+            print("Datos inválidos intente de nuevo.")
     SetStudentList(studentList)
 def ShowStudentList():
+    #Preguntar si se imprimen las asignaciones
     studentNumber = 0
     studentList = GetStudenList()
     for student in studentList:
         studentNumber = studentNumber + 1
-        print("Número del Estudiante: ",studentNumber - 1," Nombre: ",student.name," Apellido: ",student.lastName," Cédula: ",
-              student.identificationCard," Número Telefonico: ",student.phone," Dirección de Residencia: ",student.address,
-              " Correo Eléctronico ",student.email)
+        print("Número del Estudiante: ",studentNumber - 1," **Nombre: ",student.name," **Apellido: ",student.lastName," **Cédula: ",
+              student.identificationCard," **Número Telefonico: ",student.phone," **Dirección de Residencia: ",student.address,
+              " **Correo Eléctronico ",student.email)
 def ModifyStudent():
     ShowStudentList()
     studentList = GetStudenList()
-    while True:
-        enterStudentPosition = input("\nIngrese el numero del estudiante que quiera Modificar: ")
-        if enterStudentPosition in varNumbers:
-            for i in range(len(studentList)):
-                if i == int(enterStudentPosition):
-                    while True:
-                        print("\t1...Modificar Nombre del Estudiante.", "\n",
-                              "\t2...Modifciar Apellido del Estudiante.", "\n",
-                              "\t3...Modificar el número de Cédula del Estudiante.", "\n",
-                              "\t4...Modificar Residencia del Estudiante.", "\n",
-                              "\t5...Modificar el número  de Telefono del Estudiante.", "\n",
-                              "\t6...Modificar Correo del Estudiante.", "\n",
-                              "\t0...Salir.")
-                        optionsEntry = input("\nIngrese la Opción a Escoger: ")
-                        if optionsEntry != "0":
-                            if optionsEntry == "1":
-                                studentList[i].name = input("Ingrese nuevo Nombre: ")
-                            elif optionsEntry == "2":
-                                studentList[i].lastName = input("Ingrese nuevo Apellido: ")
-                            elif optionsEntry == "3":
-                                studentList[i].identificationCard = input("Ingrese nuevo número de Cédula: ")
-                            elif optionsEntry == "4":
-                                studentList[i].address = input("Ingrese nueva Dirección: ")
-                            elif optionsEntry == "5":
-                                studentList[i].phone = input("Ingrese nuevo numero telefonico: ")
-                            elif optionsEntry == "6":
-                                studentList[i].email = input("Ingrese nuevo Email: ")
-                            else:
-                                input("No has pulsado ninguna opción correcta...\n"
-                                      "Presione una tecla para volver a las Opciones.")
-                        else:
-                            break
-                        print("Nombre: ", studentList[i].name, " Apellido: ", studentList[i].lastName,
-                              " Cédula: ", studentList[i].identificationCard, " Dirección: ", studentList[i].address,
-                              " Numero de Telefono: ", studentList[i].phone, " Email: ", studentList[i].email)
-            else:
-                print("La posición del Estudiante no existe.")
-            break
-        else:
-            print("Datos inválidos intente de nuevo")
+    studentExist = False
+    enterStudentPosition = input("\nIngrese el numero del estudiante que quiera Modificar: ")
+    for i in range(len(studentList)):
+        if i == int(enterStudentPosition):
+            studentExist = True
+            while True:
+                print("\t1...Modificar Nombre del Estudiante.\n",
+                      "\t2...Modifciar Apellido del Estudiante.\n",
+                      "\t3...Modificar el número de Cédula del Estudiante.\n",
+                      "\t4...Modificar Residencia del Estudiante.\n",
+                      "\t5...Modificar el número  de Telefono del Estudiante.\n",
+                      "\t6...Modificar Correo del Estudiante.\n",
+                      "\t0...Salir.")
+                optionsEntry = input("\nIngrese la Opción a Escoger: ")
+                if optionsEntry != "0":
+                    if optionsEntry == "1":
+                        studentList[i].name = input("Ingrese nuevo Nombre: ")
+                    elif optionsEntry == "2":
+                        studentList[i].lastName = input("Ingrese nuevo Apellido: ")
+                    elif optionsEntry == "3":
+                        studentList[i].identificationCard = input("Ingrese nuevo número de Cédula: ")
+                    elif optionsEntry == "4":
+                        studentList[i].address = input("Ingrese nueva Dirección: ")
+                    elif optionsEntry == "5":
+                        studentList[i].phone = input("Ingrese nuevo numero telefonico: ")
+                    elif optionsEntry == "6":
+                        studentList[i].email = input("Ingrese nuevo Email: ")
+                    else:
+                        input("\nNo has pulsado ninguna opción correcta...\n"
+                              "Presione una tecla para volver a las Opciones.")
+                elif optionsEntry == "0":
+                    print("Saliendo...")
+                    break
+    if not studentExist:
+        print("El Estudiante NO Existe.")
     SetStudentList(studentList)
 def StudentMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Estudiante\n"
-          "\t2.. Eliminar Estudiante\n"
-          "\t3.. Ver Lista Estudianten\n"
-          "\t4.. Modificar Estudiante\n"
-          "\t0.. Volver al Menú Administrativo ")
+          "\t1...Agregar Estudiante.\n"
+          "\t2...Eliminar Estudiante.\n"
+          "\t3...Ver Lista Estudianten.\n"
+          "\t4...Modificar Estudiante.\n"
+          "\t0...Volver al Menú Administrativo.")
 def StudentMenuOptions():
     while True:
         StudentMenu()

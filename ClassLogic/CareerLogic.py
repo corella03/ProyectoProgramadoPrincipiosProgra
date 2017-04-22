@@ -21,52 +21,53 @@ def AddCareer():
         allCodeToCareer.append(codeCareer.code)
     for i in range(len(allCodeToCareer)):
         if allCodeToCareer[i] == codeEntry:
-            print("La Carrera ya existe")
+            print("Esta Carrera ya Existe.")
             break
     else:
         nameEntry = input("Ingrese el Nombre de la Carerra: ")
-        newCareer = Career (nameEntry, codeEntry)
+        newCareer = Career(nameEntry, codeEntry)
         careerList.append(newCareer)
         SetCareerList(careerList)
 def DeleteCareer():
-    careerNumber = 0
+    ShowCareerList()
     careerList= GetCareerList()
-    for career in careerList:
-        careerNumber = careerNumber + 1
-        print("Número de Carrera: ", careerNumber - 1, " Name: ", career.name, " Código: ", career.code)
-    enterCareerPosition= int (input("\nIngrese la posición de la Carrera que quiera Eliminar :"))
+    enterCareerPosition= int (input("\nIngrese la posición de la Carrera que quiera Eliminar: "))
     careerList.remove(careerList[enterCareerPosition])
     SetCareerList(careerList)
 def ShowCareerList():
+#Preguntar si tiene que imprimir Lista de Estudiantes, Docentes y Cursos.
     careerNumber = 0
     careerList = GetCareerList()
     for career in careerList:
         careerNumber = careerNumber + 1
-        print("Número de Carrera: ", careerNumber - 1, " Nombre: ", career.name, " Código: ", career.code," Cursos de la Carrera: ",
-              career.courseList," Estudiantes de la Carrera",career.studentList," Docentes de laCarrera: ",career.teacherList)
+        print("Número de Carrera: ", careerNumber - 1, " **Nombre: ", career.name, " **Código: ", career.code)
 def ModifyCareer():
+    ShowCareerList()
     enterCareerPosition= int(input("\nIngrese la Carrera que quiere Modificar: "))
     careerList = GetCareerList()
+    careerExist = False
     for i in range (len(careerList)):
         if i == enterCareerPosition:
+            careerExist = True
             while True :
-                print("1.. Modificar Nombre de la Carrera: \n",
-                      "2.. Modificar Código de la Carrerra: \n",
-                      "0.. Salir:  ")
-                optionsEntry= input(" Ingrese una Opcion: ")
+                print("\t1...Modificar Nombre de la Carrera.\n",
+                      "\t2...Modificar Código de la Carrerra.\n",
+                      "\t0...Salir.")
+                optionsEntry = input("\nIngrese la Opción a Escoger: ")
                 if optionsEntry != "0" :
                     if optionsEntry == "1" :
                         careerList[i].name = input("Ingrese un nuevo Nombre: ")
                     elif optionsEntry == "2" :
                         careerList[i].code = input("Ingrese un nuevo Código: ")
+                        careerList[i].code = careerList[i].code.upper()
                     else:
-                        print("No has pulsado ninguna opcion correcta... \n"
-                              "Presione una tecla para volver a las Opciónes")
-                else:
+                        input("\nNo has pulsado ninguna opcion correcta... \n"
+                              "Presione una tecla para volver a las Opciónes.")
+                elif optionsEntry == "0":
+                    print("Saliendo...")
                     break
-                print("Nombre: ",careerList[i].name," Código: ", careerList[i].code)
-    else:
-        print("La posicion de la Carrera no existe.")
+    if not careerExist:
+        print("La Carrera NO Existe.")
     SetCareerList(careerList)
 def CareerMenu():
     print("\n========= SELECCIONE =========\n"
@@ -79,7 +80,7 @@ def CareerMenu():
 def CareerMenuOptions():
     while True:
         CareerMenu()
-        optionsEntry = input("Ingrese la opción a Escoger: ")
+        optionsEntry = input("\nIngrese la opción a Escoger: ")
         if optionsEntry== "1" :
             AddCareer()
             input("Pulsa una tecla para continuar.")

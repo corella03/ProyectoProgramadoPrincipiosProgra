@@ -1,9 +1,11 @@
 from ClassLogic.CourseLogic import *
 from ClassLogic.StudentLogic import *
+from ClassLogic.CareerLogic import *
 def AddStudenLogicToCourses():
     ShowCourseList()
     enterCoursePosition = int(input("\nIngrese el Curso que quiere Agregarle a un Estudiante: "))
     courseList = GetCourseList()
+    careerList = GetCareerList()
     for i in range(len(courseList)):
         if i == enterCoursePosition:
             while True:
@@ -21,20 +23,23 @@ def AddStudenLogicToCourses():
                         addCode = input(" Ingrese Cédula: ")
                         for o in codeList:
                             if o in addCode:
-                                for  k in courseList[i].studentList:
+                                for k in courseList[i].studentList:
                                     if k == addCode:
-                                        print("El Estudiante ya esta Matriculado en este Curso.")
+                                        print("El Estudiante ya está Matriculado en este Curso.")
                                         break
                                 else:
+                                    for q in range(len(careerList)):
+                                        careerList[q].studentList.append(addCode)
                                     courseList[i].studentList.append(addCode)
                                     print(courseList[i].studentList)
                                     SetCourseList(courseList)
+                                    SetCareerList(careerList)
                                     break
                     elif optionsEntry == "0":
                         break
                     else:
                         print("No has pulsado ninguna opcion correcta... \n"
-                              "Presione una tecla para volver a las Opciónes")
+                              "P1resione una tecla para volver a las Opciónes")
                 else:
                     break
 def DeleteStudentToCourse():

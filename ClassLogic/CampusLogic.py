@@ -1,3 +1,4 @@
+#Imports
 import pickle
 from pathlib import Path
 from ClassTypes.Campus import *
@@ -21,23 +22,19 @@ def AddCampus():
         allCodeToCampus.append(code.campusCode)
     for j in range(len(allCodeToCampus)):
         if allCodeToCampus[j] == codeEntry:
-            print("El Recinto ya existe")
+            print("El Recinto ya Existe.")
             break
     else:
         nameEntry = input("Ingrese el Nombre del Recinto: ")
         addressEntry = input("Ingrese la Dirección del Recinto: ")
-        print(codeEntry)
         newCampus = Campus(nameEntry,addressEntry,codeEntry)
         campusList = GetCampusList()
         campusList.append(newCampus)
         SetCampusList(campusList)
 def DeleteCampus():
-    campusNumber = 0
+    #Validar si el numero ingresado es mayor que el del indice
     campusList = GetCampusList()
-    for campus in campusList:
-        campusNumber = campusNumber + 1
-        print("Número de Recinto: ",campusNumber - 1, " Nombre: ",campus.campusName, " Dirección: ",campus.campusAddress,
-              " Código: ",campus.campusCode)
+    ShowCampusList()
     enterCampusPosition = int(input("\nIngrese la posición del Recinto que quiera eliminar: "))
     campusList.remove(campusList[enterCampusPosition])
     SetCampusList(campusList)
@@ -46,17 +43,20 @@ def ShowCampusList():
     campusList = GetCampusList()
     for campus in campusList:
         campusNumber = campusNumber + 1
-        print("Número de Recinto: ",campusNumber - 1," Nombre: ",campus.campusName," Dirección: ",campus.campusAddress ,
-              " Código: ",campus.campusCode)
+        print("Número de Recinto: ",campusNumber - 1," **Nombre: ",campus.campusName," **Dirección: ",campus.campusAddress ,
+              " **Código: ",campus.campusCode)
 def ModifyCampus():
+    ShowCampusList()
     enterCampusPosition = int(input("\nIngrese el numero del Recinto que quiera Modificar: "))
     campusList = GetCampusList()
+    campusExist = False
     for i in range(len(campusList)):
         if i == enterCampusPosition:
+            campusExist = True
             while True:
-                print("\t1...Modificar Nombre del Recinto.", "\n",
-                      "\t2...Modifciar Dirección del Recinto.", "\n",
-                      "\t3...Modificar Código del Recinto.", "\n",
+                print("\t1...Modificar Nombre del Recinto.\n",
+                      "\t2...Modifciar Dirección del Recinto.\n",
+                      "\t3...Modificar Código del Recinto.\n",
                       "\t0...Salir.")
                 optionsEntry = input("\nIngrese la Opción a Escoger: ")
                 if optionsEntry != "0":
@@ -68,14 +68,13 @@ def ModifyCampus():
                         campusList[i].campusCode = input("Ingrese el nuevo Código: ")
                         campusList[i].campusCode = campusList[i].campusCode.upper()
                     else:
-                        input("No has pulsado ninguna opción correcta...\n"
+                        input("\nNo has pulsado ninguna opción correcta...\n"
                                   "Presione una tecla para volver a las Opciones.")
-                else:
+                elif optionsEntry == "0":
+                    print("Saliendo...")
                     break
-                print("Nombre: ",campusList[i].campusName," Dirección: ",campusList[i].campusAddress,
-                      " Código: ",campusList[i].campusCode)
-    else:
-        print("La posición del Recinto no existe.")
+    if not campusExist:
+        print("El Recinto NO Existe.")
     SetCampusList(campusList)
 def CampusMenu():
     print("\n========= SELECCIONE =========\n"

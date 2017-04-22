@@ -1,5 +1,6 @@
 from ClassLogic.CareerLogic import *
 from ClassLogic.StudentLogic import *
+from ClassLogic.CourseLogic import *
 def AddStudentToCareer():
     ShowCareerList()
     enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Agregar a la carrera: "))
@@ -39,14 +40,16 @@ def AddStudentToCareer():
                     break
 def DeleteStudentToCareer():
     ShowCareerList()
-    enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Eliminar de la Carrera: "))
     careerList = GetCareerList()
+    courseList = GetCourseList()
+    enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Eliminar de la Carrera: "))
     for i in range(len(careerList)):
         if i == enterCareerPosition:
-            deleteCode = input(" Ingrese la Cédula que desea eliminar: ")
+            deleteCode = input("Ingrese la Cédula que desea eliminar: ")
             careerList[i].studentList.remove(deleteCode)
-        else:
-            print("No existe el Estudiante")
+    else:
+        print("No existe el Estudiante")
+    SetCourseList(courseList)
     SetCareerList(careerList)
 def StudentToCarrerMenu():
     print("\n========= SELECCIONE =========\n"

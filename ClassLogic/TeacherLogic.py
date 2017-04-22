@@ -1,6 +1,6 @@
 import pickle
 from ClassTypes.Teacher import *
-from pathlib import  Path
+from pathlib import Path
 def GetTeacherList():
     myTeacherFile = Path("..\Files\TeacherFile.pickle")
     if myTeacherFile.is_file():
@@ -39,39 +39,36 @@ def AddTeacher():
         teacherList.append(newTeacher)
         SetTeacherList(teacherList)
 def DeleteTeacher():
-    teacherNumber = 0
+    ShowTeacherList()
     teacherList = GetTeacherList()
-    for teacher in teacherList:
-        teacherNumber = teacherNumber + 1
-        print("Número del Docente:",teacherNumber - 1,"Nombre del  Docente", teacher.teacherName, "Apellido del Docente ", teacher.teacherLastName,
-              "Número de Cédula del Docente",
-              teacher.teacherIdentificationCard, "Residencia del Docente", teacher.teacherResidency,
-              "Telefono del Docente", teacher.teacherPhone, "Correo del Docente", teacher.teacherEmail)
-    deleteTeacher = int(input("Ingrese el número que desea eliminar :"))
+    deleteTeacher = int(input("\nIngrese la posición del Docente que quiera eliminar: "))
     teacherList.remove(teacherList[deleteTeacher])
     SetTeacherList(teacherList)
 def ShowTeacherList():
     teacherNumber = 0
     teacherList = GetTeacherList()
-    teacherNumber = teacherNumber + 1
     for teacher in teacherList:
-        print("Número del Docente:",teacherNumber - 1,"Nombre del  Docente", teacher.teacherName, "Apellido del Docente ", teacher.teacherLastName, "Número de Cédula del Docente",
-              teacher.teacherIdentificationCard, "Residencia del Docente", teacher.teacherResidency,
-              "Telefono del Docente", teacher.teacherPhone,"Correo del Docente", teacher.teacherEmail)
+        teacherNumber = teacherNumber + 1
+        print("Número del Docente: ",teacherNumber - 1," **Nombre del  Docente: ",teacher.teacherName," **Apellido del Docente: ",
+              teacher.teacherLastName," **Número de Cédula del Docente: ",teacher.teacherIdentificationCard," **Residencia del Docente: ",
+              teacher.teacherResidency," **Telefono del Docente: ", teacher.teacherPhone," **Correo del Docente: ",teacher.teacherEmail)
 def ModifyTeacher():
-    modify = int(input("Ingrese el número del Docente que desea modificar:"))
+    ShowTeacherList()
+    modify = int(input("\nIngrese el número del Docente que desea modificar:"))
     teacherList = GetTeacherList()
+    teacherExiste = False
     for x in range(len(teacherList)):
         if x == modify:
+            teacherExiste = True
             while True:
-                print("\t1...Modificar Nombre del Docente", "\n",
-                      "\t2...Modifciar Apellido del Docente", "\n",
-                      "\t3...Modificar el número de Cédula del Docente", "\n",
-                      "\t4...Modificar Residencia del Docente", "\n",
-                      "\t5...Modificar Telefono del Docente", "\n",
-                      "\t6...Modificar Correo del Docente", "\n",
-                      "\t0...Salir")
-                option = input("Por favor, Ingrese una opción :")
+                print("\t1...Modificar Nombre del Docente.\n",
+                      "\t2...Modifciar Apellido del Docente.\n",
+                      "\t3...Modificar el número de Cédula del Docente.\n",
+                      "\t4...Modificar Residencia del Docente.\n",
+                      "\t5...Modificar Telefono del Docente.\n",
+                      "\t6...Modificar Correo del Docente.\n",
+                      "\t0...Salir.")
+                option = input("\nIngrese la Opción a Escoger: ")
                 if option != "0":
                     if option == "1":
                         teacherList[x].teacherName = input("Ingrese un Nombre Nuevo")
@@ -86,15 +83,13 @@ def ModifyTeacher():
                     elif option == "6":
                         teacherList[x].teacherEmail = input("Ingrese un Correo Nuevo")
                     else:
-                        input("No has pulsado ninguna opción correcta...\n"
+                        input("\nNo has pulsado ninguna opción correcta...\n"
                               "Presione una tecla para volver a las Opciones.")
-                else:
+                elif option == "0":
+                    print("Saliendo...")
                     break
-                print("Nombre: ",teacherList[x].teacherName," Apellido: ",teacherList[x].teacherLastName," Cédula:",
-                      teacherList[x].teacherIdentificationCard," Dirección: ",teacherList[x].teacherResidency," Numero de Telefono: ",
-                      teacherList[x].teacherPhone," Email: ",teacherList[x].teacherEmail)
-    else:
-        print("La posición del Docente no existe.")
+    if not teacherExiste:
+        print("El Docente NO Existe.")
     SetTeacherList(teacherList)
 def TeacherMenu():
     print("\n========= SELECCIONE =========\n"
@@ -122,7 +117,6 @@ def TeacherMenuOption():
             input("\npulsa una tecla para continuar.")
         elif option == "0":
             break
-            input("\npulsa una tecla para continuar.")
         else:
             print("")
             input("No has pulsado ninguna opción correcta...\n"

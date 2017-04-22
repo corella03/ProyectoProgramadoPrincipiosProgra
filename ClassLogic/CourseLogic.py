@@ -21,7 +21,7 @@ def AddCourse():
         allCodeToCourse.append(code.courseCode)
     for i in range(len(allCodeToCourse)):
         if allCodeToCourse[i] == codeEntry:
-            print("El Curso ya existe")
+            print("El Curso ya Existe.")
             break
     else:
         nameEntry = input("Ingrese el Nombre del Curso: ")
@@ -29,32 +29,31 @@ def AddCourse():
         courseList.append(newCourse)
         SetCourseList(courseList)
 def DeleteCourse():
-    courseNumber = 0
+    ShowCourseList()
     courseList = GetCourseList()
-    for course in courseList:
-        courseNumber = courseNumber + 1
-        print("Número de Curso",courseNumber - 1, " Nombre: ",course.courseName, " Código: ",course.courseCode)
     enterCoursePosition = int(input("\nIngrese la posición del Curso que quiera Eliminar: "))
     courseList.remove(courseList[enterCoursePosition])
     SetCourseList(courseList)
 def ShowCourseList():
+    #Preguntar que si hay que imprimir las asignaciones
     courseNumber = 0
     courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso: ",courseNumber - 1," Nombre: ",course.courseName, " Código: ",course.courseCode," Recinto de la Carrera: ",
-              course.campusList, " Aulas de los Cursos: ",course.classRoomsList," Horarios de los Cursos: ",course.classScheduleList,
-              " Docentes de los Cursos: ",course.teacherList," Estudiantes de los Cursos: ",course.studentList)
+        print("Número de Curso: ",courseNumber - 1," **Nombre: ",course.courseName, " **Código: ",course.courseCode)
 def ModifyCourse():
+    ShowCourseList()
     enterCoursePosition = int(input("\nIngrese el numero del Curso que quiera Modificar: "))
     courseList = GetCourseList()
+    courseExist = False
     for i in range(len(courseList)):
         if i == enterCoursePosition:
+            courseExist = True
             while True:
-                print("\t1...Modificar Nombre del Curso.", "\n",
-                      "\t2...Modificar Código del Curso.", "\n",
+                print("\t1...Modificar Nombre del Curso.\n",
+                      "\t2...Modificar Código del Curso.\n",
                       "\t0...Salir.")
-                optionsEntry = input("Ingrese la Opción a Escoger: ")
+                optionsEntry = input("\nIngrese la Opción a Escoger: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
                         courseList[i].courseName = input("Ingrese nuevo Nombre: ")
@@ -62,13 +61,13 @@ def ModifyCourse():
                         courseList[i].courseCode = input("Ingrese el nuevo Código: ")
                         courseList[i].courseCode = courseList[i].courseCode.upper()
                     else:
-                        input("No has pulsado ninguna opción correcta...\n"
+                        input("\nNo has pulsado ninguna opción correcta...\n"
                               "Presione una tecla para volver a las Opciones.")
-                else:
+                elif optionsEntry == "0":
+                    print("Saliendo...")
                     break
-                print("Nombre: ",courseList[i].courseName," Código: ", courseList[i].courseCode)
-        else:
-            print("La posición del Curso no existe.")
+    if not courseExist:
+        print("El Curso NO Existe.")
     SetCourseList(courseList)
 def CourseMenu():
     print("\n========= SELECCIONE =========\n"
@@ -77,7 +76,7 @@ def CourseMenu():
           "\t2.. Eliminar Curso.\n"
           "\t3.. Ver Cursos.\n"
           "\t4.. Modificar Cursos.\n"
-          "\t0.. Volver al Menú Administrativo." + "\033[;23m")
+          "\t0.. Volver al Menú Administrativo.")
 def CourseMenuOptions():
     while True:
         CourseMenu()
