@@ -3,10 +3,13 @@ from ClassLogic.StudentLogic import *
 from ClassLogic.CourseLogic import *
 def AddStudentToCareer():
     ShowCareerList()
-    enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Agregar a la carrera: "))
     careerList = GetCareerList()
+    enterCareerPosition = input("\nIngrese la carrera que quiere Agregar al estudiante: ")
+    if not enterCareerPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(careerList)):
-        if i == enterCareerPosition:
+        if i == int(enterCareerPosition):
             while True:
                 print("1.. Asignar un Estudiante a una Carrera.\n"
                       "0.. Salir.")
@@ -17,7 +20,7 @@ def AddStudentToCareer():
                         codeList = []
                         for j in range(len(studentList)):
                             codeList.append(studentList[j].identificationCard)
-                            print("Nombre del Curso: ",studentList[j].name,
+                            print("Nombre del Estudiante: ",studentList[j].name,
                                   " Cédula: ",studentList[j].identificationCard)
                         print(codeList)
                         addCode = input(" Ingrese Cédula: ")
@@ -42,13 +45,17 @@ def DeleteStudentToCareer():
     ShowCareerList()
     careerList = GetCareerList()
     courseList = GetCourseList()
-    enterCareerPosition = int(input("\nIngrese el Estudiante que quiere Eliminar de la Carrera: "))
+    enterCareerPosition = input("\nIngrese el Estudiante que quiere Eliminar de la Carrera: ")
+    if not enterCareerPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(careerList)):
-        if i == enterCareerPosition:
+        if i == int(enterCareerPosition):
             deleteCode = input("Ingrese la Cédula que desea eliminar: ")
-            careerList[i].studentList.remove(deleteCode)
-    else:
-        print("No existe el Estudiante")
+            if deleteCode in careerList[i].studentList:
+                careerList[i].studentList.remove(deleteCode)
+            else:
+                print("No existe el Estudiante")
     SetCourseList(courseList)
     SetCareerList(careerList)
 def StudentToCarrerMenu():

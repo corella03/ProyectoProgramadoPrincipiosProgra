@@ -2,10 +2,13 @@ from ClassLogic.CourseLogic import *
 from ClassLogic.ClassScheduleLogic import *
 def AddClassScheduleToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Agregarle un Horario: "))
     courseList = GetCourseList()
+    enterCoursePosition = input("\nIngrese el Curso que quiere Agregarle un Horario: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(courseList)):
-        if i == enterCoursePosition:
+        if i == int(enterCoursePosition):
             while True:
                 print("1.. Asignar un Horario a un Curso.\n"
                       "0.. Salir.")
@@ -40,14 +43,18 @@ def AddClassScheduleToCourses():
                     break
 def DeleteClassScheduleToCourse():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle un Horario: "))
+    enterCoursePosition = input("\nIngrese el Curso que quiere Eliminarle un Horario: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     courseList = GetCourseList()
     for i in range(len(courseList)):
-        if i == enterCoursePosition:
+        if i == int(enterCoursePosition):
             deleteCode = input("Ingrese el Tipo que desea eliminar")
-            courseList[i].classScheduleList.remove(deleteCode)
-        else:
-            print("No existe ese Curso")
+            if deleteCode in courseList[i].classScheduleList:
+                courseList[i].classScheduleList.remove(deleteCode)
+            else:
+                print("No existe ese Curso")
     SetCourseList(courseList)
 def ClassScheduleToCourseMenu():
     print("\n========= SELECCIONE =========\n"

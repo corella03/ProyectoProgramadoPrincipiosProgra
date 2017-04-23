@@ -1,7 +1,8 @@
 #Imports
+from ClassTypes.Campus import *
+from ClassLogic.CourseLogic import *
 import pickle
 from pathlib import Path
-from ClassTypes.Campus import *
 def GetCampusList():
     myCampusFile = Path("..\Files\CampusFile.pickle")
     if myCampusFile.is_file():
@@ -34,10 +35,19 @@ def AddCampus():
 def DeleteCampus():
     #Validar si el numero ingresado es mayor que el del indice
     campusList = GetCampusList()
+    courseList = GetCourseList()
     ShowCampusList()
-    enterCampusPosition = int(input("\nIngrese la posición del Recinto que quiera eliminar: "))
-    campusList.remove(campusList[enterCampusPosition])
+    enterCampusPosition = input("\nIngrese la posición del Recinto que quiera eliminar: ")
+    if not enterCampusPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
+    for course in courseList:
+        if campusList[int(enterCampusPosition)].campusCode in course.campusList:
+            course.campusList.remove(campusList[int(enterCampusPosition)].campusCode)
+    if campusList[int(enterCampusPosition)] in campusList:
+        campusList.remove(campusList[int(enterCampusPosition)])
     SetCampusList(campusList)
+    SetCourseList(courseList)
 def ShowCampusList():
     campusNumber = 0
     campusList = GetCampusList()

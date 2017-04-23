@@ -1,4 +1,5 @@
 import pickle
+from ClassLogic.CareerLogic import *
 from ClassTypes.Course import *
 from pathlib import Path
 def GetCourseList():
@@ -31,16 +32,26 @@ def AddCourse():
 def DeleteCourse():
     ShowCourseList()
     courseList = GetCourseList()
-    enterCoursePosition = int(input("\nIngrese la posición del Curso que quiera Eliminar: "))
-    courseList.remove(courseList[enterCoursePosition])
+    careerList = GetCareerList()
+    enterCoursePosition = input("\nIngrese la posición del Curso que quiera Eliminar: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
+    for career in careerList:
+        if courseList[int(enterCoursePosition)].courseCode in career.courseList:
+            career.courseList.remove(courseList[int(enterCoursePosition)].courseCode)
+    if courseList[int(enterCoursePosition)] in courseList:
+        courseList.remove(courseList[int(enterCoursePosition)])
     SetCourseList(courseList)
+    SetCareerList(careerList)
 def ShowCourseList():
     #Preguntar que si hay que imprimir las asignaciones
     courseNumber = 0
     courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso: ",courseNumber - 1," **Nombre: ",course.courseName, " **Código: ",course.courseCode)
+        print("Número de Curso: ",courseNumber - 1," **Nombre: ",course.courseName, " **Código: ",course.courseCode,
+              "Est",course.studentList,"prf",course.teacherList,course.campusList,course.classRoomsList,course.classScheduleList)
 def ModifyCourse():
     ShowCourseList()
     enterCoursePosition = int(input("\nIngrese el numero del Curso que quiera Modificar: "))

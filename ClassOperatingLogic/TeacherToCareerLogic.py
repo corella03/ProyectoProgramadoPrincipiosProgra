@@ -2,10 +2,13 @@ from ClassLogic.CareerLogic import *
 from ClassLogic.TeacherLogic import *
 def AddTeacherToCareer():
     ShowCareerList()
-    enterCareerPosition = int(input("\nIngrese la Carrera que quiere Agregar Cursos: "))
     careerList = GetCareerList()
+    enterCareerPosition = input("\nIngrese la Carrera que quiere Agregar Cursos: ")
+    if not enterCareerPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(careerList)):
-        if i == enterCareerPosition:
+        if i == int(enterCareerPosition):
             while True:
                 print("1.. Asignar un Docente a una Carrera.\n"
                       "0.. Salir.")
@@ -39,14 +42,18 @@ def AddTeacherToCareer():
                     break
 def DeleteTeacherToCareer():
     ShowCareerList()
-    enterCareerPosition = int(input("\nIngrese la Carrera que quiere Eliminar Docentes: "))
     careerList = GetCareerList()
+    enterCareerPosition = input("\nIngrese la Carrera que quiere Eliminar Docentes: ")
+    if not enterCareerPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(careerList)):
-        if i == enterCareerPosition:
-            deleteCode = input("Ingrese el cedula que desea eliminar")
-            careerList[i].teacherList.remove(deleteCode)
-    else:
-        print("No existe ese Cedula")
+        if i == int(enterCareerPosition):
+            deleteCode = input("Ingrese la Cédula que desea eliminar: ")
+            if deleteCode in careerList[i].teacherList:
+                careerList[i].teacherList.remove(deleteCode)
+            else:
+                print("No existe ese Cedula")
     SetCareerList(careerList)
 def TeacherToCareerMenu():
     print("\n========= SELECCIONE =========\n"
@@ -58,12 +65,12 @@ def TeacherToCareerMenuOptions():
     while True:
         TeacherToCareerMenu()
         optionsEntry = input("Ingrese la opción a Escoger: ")
-        if optionsEntry== "1" :
+        if optionsEntry== "1":
             AddTeacherToCareer()
             input("Pulsa una tecla para continuar.")
-        elif optionsEntry == "2" :
+        elif optionsEntry == "2":
             DeleteTeacherToCareer()
-        elif optionsEntry == "0" :
+        elif optionsEntry == "0":
             break
         else:
             print("")

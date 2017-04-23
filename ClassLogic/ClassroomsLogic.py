@@ -1,6 +1,7 @@
-import pickle
 from ClassTypes.ClassRooms import *
+from ClassLogic.CourseLogic import *
 from pathlib import Path
+import pickle
 def GetClassRoomsList():
     myClassRoomsFile = Path ("..\Files\ClassRoomsFile.pickle")
     if myClassRoomsFile.is_file():
@@ -30,10 +31,19 @@ def AddClassRooms():
         SetClassRoomsList(classRoomsList)
 def DeleteClassRooms():
     ShowCareerList()
+    courseList = GetCourseList()
     classRoomsList = GetClassRoomsList()
-    enterClassRoomsPosition = int(input("\nIngrese la posición del Aula que quiera Eliminar: "))
-    classRoomsList.remove(classRoomsList[enterClassRoomsPosition])
+    enterClassRoomsPosition = input("\nIngrese la posición del Aula que quiera Eliminar: ")
+    if not enterClassRoomsPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
+    for course in courseList:
+        if classRoomsList[int(enterClassRoomsPosition)].classRoomsCode in course.classRoomsList:
+            course.classRoomsList.remove(classRoomsList[int(enterClassRoomsPosition)].classRoomsCode)
+    if classRoomsList[int(enterClassRoomsPosition)] in classRoomsList:
+        classRoomsList.remove(classRoomsList[int(enterClassRoomsPosition)])
     SetClassRoomsList(classRoomsList)
+    SetCourseList(courseList)
 def ShowCareerList():
     classRoomsList = GetClassRoomsList()
     classRoomsNumber = 0

@@ -1,7 +1,8 @@
+from ClassTypes.Student import *
+from ClassLogic.CourseLogic import *
+from ClassLogic.CareerLogic import *
 import pickle
 from pathlib import Path
-from ClassTypes.Student import *
-varNumbers = "0123456789"
 def GetStudenList():
     myStudentFile = Path("..\Files\StudentFile.pickle")
     if myStudentFile.is_file():#yaExiste es porque alguien le metio una lista "Algo"
@@ -41,16 +42,24 @@ def AddStudent():
         SetStudentList(studentList)
 def DeleteStudent():
     studentList = GetStudenList()
+    careerList = GetCareerList()
+    courseList = GetCourseList()
     ShowStudentList()
-    #Validar si solo le da enter y los numeros igaules no funcionan ejem 11
-    while True:
-        enterStudentPosition = input("\nIngrese el numero del estudiante que quiera eliminar: ")
-        if enterStudentPosition in varNumbers:
-            studentList.remove(studentList[int(enterStudentPosition)])
-            break
-        else:
-            print("Datos inválidos intente de nuevo.")
+    enterStudentPosition = input("\nIngrese el numero del estudiante que quiera eliminar: ")
+    if not enterStudentPosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
+    for career in careerList:
+        if studentList[int(enterStudentPosition)].identificationCard in career.studentList:
+            career.studentList.remove(studentList[int(enterStudentPosition)].identificationCard)
+    for course in courseList:
+        if studentList[int(enterStudentPosition)].identificationCard in course.studentList:
+            course.studentList.remove(studentList[int(enterStudentPosition)].identificationCard)
+    if studentList[int(enterStudentPosition)] in studentList:
+        studentList.remove(studentList[int(enterStudentPosition)])
     SetStudentList(studentList)
+    SetCareerList(careerList)
+    SetCourseList(courseList)
 def ShowStudentList():
     #Preguntar si se imprimen las asignaciones
     studentNumber = 0

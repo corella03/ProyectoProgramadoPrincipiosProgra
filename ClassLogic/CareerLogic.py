@@ -40,7 +40,8 @@ def ShowCareerList():
     careerList = GetCareerList()
     for career in careerList:
         careerNumber = careerNumber + 1
-        print("Número de Carrera: ", careerNumber - 1, " **Nombre: ", career.name, " **Código: ", career.code)
+        print("Número de Carrera: ", careerNumber - 1, " **Nombre: ", career.name, " **Código: ", career.code, career.courseList
+              ,career.teacherList,career.studentList)
 def ModifyCareer():
     ShowCareerList()
     enterCareerPosition= int(input("\nIngrese la Carrera que quiere Modificar: "))

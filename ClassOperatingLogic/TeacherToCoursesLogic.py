@@ -1,11 +1,16 @@
 from ClassLogic.CourseLogic import *
 from ClassLogic.TeacherLogic import *
+from ClassLogic.CourseLogic import *
 def AddTeacherToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Asignarle un Aula: "))
     courseList = GetCourseList()
+    careerList = GetCareerList()
+    enterCoursePosition = input("\nIngrese el Curso que quiere Asignarle un Aula: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(courseList)):
-        if i == enterCoursePosition:
+        if i == int(enterCoursePosition):
             while True:
                 print("1.. Asignar un Docente a un Curso.\n"
                       "0.. Salir.")
@@ -26,9 +31,31 @@ def AddTeacherToCourses():
                                         print("Este Docente ya está Registrado en este Curso.")
                                         break
                                 else:
+                                    careerIndexes = []
+                                    for q in range(len(careerList)):
+                                        for careerCourse in careerList[q].courseList:
+                                            if careerCourse == courseList[i].courseCode:
+                                                careerIndexes.append(q)
+                                    if len(careerIndexes) == 0:
+                                        print("Este curso no esta asignado a ninguna carrera, por favor asignarlo, antes de asignarle un Docente.")
+                                        break
+                                    elif len(careerIndexes) == 1:
+                                        if not addCode in careerList[careerIndexes[0]].teacherList:
+                                            careerList[careerIndexes[0]].teacherList.append(addCode)
+                                    else:
+                                        print("A cual carrera quiere asignar el docente")
+                                        for e in careerIndexes:
+                                            print(e, careerList[i].name)
+                                        careerseleted = int(input("digite la posicion de la carrera"))
+                                        # validate not repeat students
+                                        if not addCode in careerList[careerseleted].teacherList:
+                                            careerList[careerseleted].teacherList.append(addCode)
+                                        else:
+                                            print("El estudiante ya esta matriculado en esta carrera")
                                     courseList[i].teacherList.append(addCode)
                                     print(courseList[i].teacherList)
                                     SetCourseList(courseList)
+                                    SetCareerList(careerList)
                                     break
                     elif optionsEntry == "0":
                         break
@@ -39,12 +66,16 @@ def AddTeacherToCourses():
                     break
 def DeleteTeacherLogicToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle un Docente: "))
     courseList = GetCourseList()
+    enterCoursePosition = input("\nIngrese el Curso que quiere Eliminarle un Docente: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(courseList)):
-        if i == enterCoursePosition:
+        if i == int(enterCoursePosition):
             deleteCode = input("Ingrese el codigo que desea eliminar")
-            courseList[i].teacherList.remove(deleteCode)
+            if deleteCode in courseList[i].teacherList:
+                courseList[i].teacherList.remove(deleteCode)
         else:
             print("No existe ese Curso")
     SetCourseList(courseList)

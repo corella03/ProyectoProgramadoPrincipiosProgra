@@ -1,5 +1,6 @@
-import pickle
 from ClassTypes.Teacher import *
+from ClassLogic.CourseLogic import *
+import pickle
 from pathlib import Path
 def GetTeacherList():
     myTeacherFile = Path("..\Files\TeacherFile.pickle")
@@ -40,10 +41,19 @@ def AddTeacher():
         SetTeacherList(teacherList)
 def DeleteTeacher():
     ShowTeacherList()
+    courseList = GetCourseList()
     teacherList = GetTeacherList()
-    deleteTeacher = int(input("\nIngrese la posición del Docente que quiera eliminar: "))
-    teacherList.remove(teacherList[deleteTeacher])
+    deleteTeacher = input("\nIngrese la posición del Docente que quiera eliminar: ")
+    if not deleteTeacher.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
+    for course in courseList:
+        if teacherList[int(deleteTeacher)].teacherIdentificationCard in course.teacherList:
+            course.studentList.remove(deleteTeacher[int(deleteTeacher)].teacherIdentificationCard)
+    if teacherList[int(deleteTeacher)] in teacherList:
+        teacherList.remove(teacherList[int(deleteTeacher)])
     SetTeacherList(teacherList)
+    SetCourseList(courseList)
 def ShowTeacherList():
     teacherNumber = 0
     teacherList = GetTeacherList()

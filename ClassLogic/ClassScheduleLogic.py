@@ -1,6 +1,7 @@
+from ClassTypes.ClassSchedule import *
+from ClassLogic.CourseLogic import *
 import pickle
 from pathlib import Path
-from ClassTypes.ClassSchedule import *
 allTypeClassSchedule = []
 def GetClassScheduleList():
     myClassScheduleFile = Path("..\Files\ClassScheduleFile.pickle")
@@ -38,10 +39,19 @@ def AddClassSchedule():
         SetClassScheduleList(classScheduleList)
 def DeleteClassSchedule():
     ShowClassSchedule()
+    courseList = GetCourseList()
     classScheduleList = GetClassScheduleList()
-    enterCampusPosition = int(input("\nIngrese la posición del Horario que quiera eliminar: "))
-    classScheduleList.remove(classScheduleList[enterCampusPosition])
+    enterClassSchedulePosition = input("\nIngrese la posición del Horario que quiera eliminar: ")
+    if not enterClassSchedulePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
+    for course in courseList:
+        if (classScheduleList[int(enterClassSchedulePosition)]).scheduleType in course.classScheduleList:
+            course.classRoomsList.remove(classScheduleList[int(enterClassSchedulePosition)].scheduleType)
+    if classScheduleList[int(enterClassSchedulePosition)] in classScheduleList:
+        classScheduleList.remove(classScheduleList[int(enterClassSchedulePosition)])
     SetClassScheduleList(classScheduleList)
+    SetCourseList(courseList)
 def ShowClassSchedule():
     classScheduleNumber = 0
     classScheduleList = GetClassScheduleList()

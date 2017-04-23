@@ -2,10 +2,13 @@ from ClassLogic.CourseLogic import *
 from ClassLogic.CampusLogic import *
 def AddCampusToCourses():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Agregarle Recintos: "))
     courseList = GetCourseList()
+    enterCoursePosition = input("\nIngrese el Curso que quiere Agregarle Recintos: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     for i in range(len(courseList)):
-        if i == enterCoursePosition:
+        if i == int(enterCoursePosition):
             while True:
                 print("1.. Asignar un Recinto a un Curso.\n"
                       "0.. Salir.")
@@ -38,14 +41,18 @@ def AddCampusToCourses():
                     break
 def DeleteCampusToCourse():
     ShowCourseList()
-    enterCoursePosition = int(input("\nIngrese el Curso que quiere Eliminarle Recintos: "))
+    enterCoursePosition = input("\nIngrese el Curso que quiere Eliminarle Recintos: ")
+    if not enterCoursePosition.isdigit():
+        print("Haz ingresado un dato que no es un número.")
+        return
     courseList = GetCourseList()
     for i in range(len(courseList)):
-        if i == enterCoursePosition:
+        if i == int(enterCoursePosition):
             deleteCode = input("Ingrese el codigo que desea eliminar")
-            courseList[i].campusList.remove(deleteCode)
-        else:
-            print("No existe ese Curso")
+            if deleteCode in courseList[i].campusList:
+                courseList[i].campusList.remove(deleteCode)
+            else:
+                print("No existe ese Curso")
     SetCourseList(courseList)
 def CampusToCourseMenu():
     print("\n========= SELECCIONE =========\n"
