@@ -104,30 +104,29 @@ def ModifyTeacher():
 def TeacherMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Docente.\n"
-          "\t2.. Eliminar Docente.\n"
-          "\t3.. Ver Lista Docente.\n"
-          "\t4.. Modificar Docente.\n"
-          "\t0.. Volver al Menú Administrativo.")
+          "\t1...Agregar Docente.\n"
+          "\t2...Eliminar Docente.\n"
+          "\t3...Ver Lista Docente.\n"
+          "\t4...Modificar Docente.\n"
+          "\t0...Volver al Menú Administrativo.")
 def TeacherMenuOption():
     while True:
         TeacherMenu()
         option = input("\nIngrese la Opción a Escoger: ")
         if option == "1":
             AddTeacher()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif option == "2":
             DeleteTeacher()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif option == "3":
             ShowTeacherList()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif option == "4":
             ModifyTeacher()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif option == "0":
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")

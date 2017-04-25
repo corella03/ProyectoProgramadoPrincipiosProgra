@@ -89,29 +89,29 @@ def ModifyCampus():
 def CampusMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Recinto.\n"
-          "\t2.. Eliminar Recinto.\n"
-          "\t3.. Ver Recintos.\n"
-          "\t4.. Modificar Recinto.\n"
-          "\t0.. Volver al Menú Administrativo.")
+          "\t1...Agregar Recinto.\n"
+          "\t2...Eliminar Recinto.\n"
+          "\t3...Ver Recintos.\n"
+          "\t4...Modificar Recinto.\n"
+          "\t0...Volver al Menú Administrativo.")
 def CampusMenuOptions():
     while True:
         CampusMenu()
         optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             AddCampus()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2":
             DeleteCampus()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3":
             ShowCampusList()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4":
             ModifyCampus()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0":
             break
         else:
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")

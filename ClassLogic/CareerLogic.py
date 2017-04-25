@@ -1,8 +1,8 @@
 import pickle
 from pathlib import Path
 from ClassTypes.Career import Career
-def GetCareerList() :
-    myCareerFile = Path ("..\Files\CareerFile.pickle")
+def GetCareerList():
+    myCareerFile = Path("..\Files\CareerFile.pickle")
     if myCareerFile.is_file():
         with open("..\Files\CareerFile.pickle", "rb") as careerFile:
             careerList = pickle._load(careerFile)
@@ -35,13 +35,11 @@ def DeleteCareer():
     careerList.remove(careerList[enterCareerPosition])
     SetCareerList(careerList)
 def ShowCareerList():
-#Preguntar si tiene que imprimir Lista de Estudiantes, Docentes y Cursos.
     careerNumber = 0
     careerList = GetCareerList()
     for career in careerList:
         careerNumber = careerNumber + 1
-        print("Número de Carrera: ", careerNumber - 1, " **Nombre: ", career.name, " **Código: ", career.code, career.courseList
-              ,career.teacherList,career.studentList)
+        print("Número de Carrera: ", careerNumber - 1," **Nombre: ",career.name," **Código: ",career.code)
 def ModifyCareer():
     ShowCareerList()
     enterCareerPosition= int(input("\nIngrese la Carrera que quiere Modificar: "))
@@ -70,33 +68,40 @@ def ModifyCareer():
     if not careerExist:
         print("La Carrera NO Existe.")
     SetCareerList(careerList)
+def ShowAsignationToCareer():
+    careerList = GetCareerList()
+    careerNumber = 0
+    for career in careerList:
+        careerNumber = careerNumber + 1
+        print("Número de Carrera: ", careerNumber - 1, " **Nombre: ", career.name, " **Código: ", career.code,
+              " **Lista de Cursos de la Carrera: ",career.courseList," \n\t**Lista de Docentes de la  Carrera: ",career.teacherList,
+              " **Lista de Estudiantes de la Carrera: ",career.studentList)
 def CareerMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Carrera.\n"
-          "\t2.. Eliminar Carrera.\n"
-          "\t3.. Ver Carrera.\n"
-          "\t4.. Modificar Carrera.\n"
-          "\t0.. Volver al Menú Administrativo.")
+          "\t1...Agregar Carrera.\n"
+          "\t2...Eliminar Carrera.\n"
+          "\t3...Ver Carrera.\n"
+          "\t4...Modificar Carrera.\n"
+          "\t0...Volver al Menú Administrativo.")
 def CareerMenuOptions():
     while True:
         CareerMenu()
         optionsEntry = input("\nIngrese la opción a Escoger: ")
         if optionsEntry== "1" :
             AddCareer()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2" :
             DeleteCareer()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3" :
             ShowCareerList()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4" :
             ModifyCareer()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0" :
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")

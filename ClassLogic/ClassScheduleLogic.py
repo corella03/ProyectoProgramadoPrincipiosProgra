@@ -102,29 +102,29 @@ def ModifyClassSchedule():
 def ClassScheduleMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Horario.\n"
-          "\t2.. Eliminar Horario.\n"
-          "\t3.. Ver Horarios.\n"
-          "\t4.. Modificar Horario.\n"
-          "\t0.. Volver al Menú Administrativo.")
+          "\t1...Agregar Horario.\n"
+          "\t2...Eliminar Horario.\n"
+          "\t3...Ver Horarios.\n"
+          "\t4...Modificar Horario.\n"
+          "\t0...Volver al Menú Administrativo.")
 def  ClassScheduleMenuOptions():
     while True:
         ClassScheduleMenu()
         optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             AddClassSchedule()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2":
             DeleteClassSchedule()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3":
             ShowClassSchedule()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4":
             ModifyClassSchedule()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0":
             break
         else:
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")

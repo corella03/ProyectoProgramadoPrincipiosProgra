@@ -16,12 +16,12 @@ def Menu():
 
 def DataManager():
     Menu()
-    idEntry = input("Digite Usuario\n--->")
-    passwordEntry = input("Digite Contra\n--->")
+    idEntry = input("Digite Usuario\n---> ")
+    passwordEntry = input("Digite Contra\n---> ")
     administratorLogin = GetAdministratorLogin()
     if idEntry == administratorLogin.id and passwordEntry == administratorLogin.password:
         SetAdministratorLogin(administratorLogin)
         ChooseOption()
     else:
-        print("Usuario o Contraseña Incorreta")
+        print("Usuario o Contraseña Incorreta.")
 DataManager()

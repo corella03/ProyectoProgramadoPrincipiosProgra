@@ -81,30 +81,29 @@ def ModifyClassRooms():
 def ClassRoomsMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Aula.\n"
-          "\t2.. Eliminar Aula.\n"
-          "\t3.. Ver Aulas.\n"
-          "\t4.. Modificar Aulas.\n"
-          "\t0.. Volver al Menú Administrativo.")
+          "\t1...Agregar Aula.\n"
+          "\t2...Eliminar Aula.\n"
+          "\t3...Ver Aulas.\n"
+          "\t4...Modificar Aulas.\n"
+          "\t0...Volver al Menú Administrativo.")
 def ClassRoomsMenuOptions():
     while True:
         ClassRoomsMenu()
         optionsEntry = input("\nIngrese la opción a Escoger: ")
         if optionsEntry== "1" :
             AddClassRooms()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2" :
             DeleteClassRooms()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3" :
             ShowCareerList()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4":
             ModifyClassRooms()
-            input("Pulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0" :
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")

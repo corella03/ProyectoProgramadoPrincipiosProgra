@@ -122,19 +122,18 @@ def StudentMenuOptions():
         optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             AddStudent()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2":
             DeleteStudent()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3":
             ShowStudentList()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4":
             ModifyStudent()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0":
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")

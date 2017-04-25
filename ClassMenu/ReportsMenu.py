@@ -1,7 +1,7 @@
 from ClassLogic.StudentLogic import *
-from ClassLogic.CareerLogic import *
 from ClassLogic.TeacherLogic import *
 from ClassLogic.CourseLogic import *
+from ClassLogic.CareerLogic import *
 import time
 def Report1():
     careerList = GetCareerList()
@@ -140,43 +140,42 @@ def Report7():
 def ReportsMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Imprimir lista de Carreras a la que un Estudiante pertenece.\n"
-          "\t2.. Imprimir lista de Cursos por Carrera que un Estudiante pertenece.\n"
-          "\t3.. Imprimir lista de Cursos por Carrera que un Docente pertenece.\n"
-          "\t4.. Imprimir Curso por cada Carrera con más Estudiantes Matriculados.\n"
-          "\t5.. Imprimir Curso por cada Carrera con menos Estudiantes Matriculados.\n"
-          "\t6.. Imprimir el Horario de un Curso de una Carrera, donde más Estudiantes están Matriculados.\n"
-          "\t7.. Imprimir la Carrera, con los cursos, con el Recinto de cada Curso, con el Aula de cada Recinto,"
+          "\t1...Imprimir lista de Carreras a la que un Estudiante pertenece.\n"
+          "\t2...Imprimir lista de Cursos por Carrera que un Estudiante pertenece.\n"
+          "\t3...Imprimir lista de Cursos por Carrera que un Docente pertenece.\n"
+          "\t4...Imprimir Curso por cada Carrera con más Estudiantes Matriculados.\n"
+          "\t5...Imprimir Curso por cada Carrera con menos Estudiantes Matriculados.\n"
+          "\t6...Imprimir el Horario de un Curso de una Carrera, donde más Estudiantes están Matriculados.\n"
+          "\t7...Imprimir la Carrera, con los cursos, con el Recinto de cada Curso, con el Aula de cada Recinto,"
           " con el Horario de cada Curso de un Estudiante en específico.\n"
-          "\t0.. Volver al Menú Administrativo ")
+          "\t0...Volver al Menú Administrativo.")
 def ReportsMenuOptions():
     while True:
         ReportsMenu()
         optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             Report1()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "2":
             Report2()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "3":
             Report3()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "4":
             Report4()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "5":
             Report5()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "6":
             Report6()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "7":
             Report7()
-            input("\npulsa una tecla para continuar.")
+            input("\nPulsa una tecla para continuar.")
         elif optionsEntry == "0":
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")

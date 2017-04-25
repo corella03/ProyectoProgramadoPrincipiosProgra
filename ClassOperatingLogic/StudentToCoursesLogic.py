@@ -1,6 +1,12 @@
 from ClassLogic.StudentLogic import *
 from ClassLogic.CourseLogic import *
 from ClassLogic.CareerLogic import *
+studentIdentificationCardsList = []
+def ListOfStudentIdentificationCard():
+    studentList = GetStudenList()
+    for j in range(len(studentList)):
+        studentIdentificationCardsList.append(studentList[j].identificationCard)
+        print("Nombre del Estudiante: ", studentList[j].name," **Cédula : ", studentList[j].identificationCard)
 def AddStudenLogicToCourses():
     ShowCourseList()
     courseList = GetCourseList()
@@ -12,22 +18,18 @@ def AddStudenLogicToCourses():
     for i in range(len(courseList)):
         if i == int(enterCoursePosition):
             while True:
-                print("1.. Asignar un Estudiante a un Curso.\n"
-                      "0.. Salir.")
-                optionsEntry = input(" Ingrese una Opcion: ")
+                print("1...Asignar un Estudiante a un Curso.\n"
+                      "0...Salir.")
+                optionsEntry = input("\nIngrese una Opcion: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
-                        studentList = GetStudenList()
-                        codeList = []
-                        for j in range(len(studentList)):
-                            codeList.append(studentList[j].identificationCard)
-                            print("Nombre del Estudiante: ",studentList[j].name,
-                                  " Cédula : ", studentList[j].identificationCard)
-                        addCode = input(" Ingrese Cédula: ")
-                        for o in codeList:
-                            if o in addCode:
+                        ListOfStudentIdentificationCard()
+                        addIdentificationCard = input("\nIngrese número de Cédula del Estudiante a Asignar: ")
+                        addIdentificationCard = addIdentificationCard.upper()
+                        for o in studentIdentificationCardsList:
+                            if o in addIdentificationCard:
                                 for k in courseList[i].studentList:
-                                    if k == addCode:
+                                    if k == addIdentificationCard:
                                         print("El Estudiante ya está Matriculado en este Curso.")
                                         break
                                 else:
@@ -41,27 +43,31 @@ def AddStudenLogicToCourses():
                                         break
                                     elif len(careerIndexes) == 1:
                                         #validate not repeat students
-                                        if not addCode in careerList[careerIndexes[0]].studentList:
-                                            careerList[careerIndexes[0]].studentList.append(addCode)
+                                        if not addIdentificationCard in careerList[careerIndexes[0]].studentList:
+                                            careerList[careerIndexes[0]].studentList.append(addIdentificationCard)
+                                            print("Asignación Correcta.\n")
                                     else:
                                         print("A cual carrera quiere asignar el estudiente")
                                         for e in careerIndexes:
                                             print(e, careerList[i].name)
                                         careerseleted = int(input("digite la posicion de la carrera"))
                                         #validate not repeat students
-                                        if not addCode in careerList[careerseleted].studentList:
-                                            careerList[careerseleted].studentList.append(addCode)
+                                        if not addIdentificationCard in careerList[careerseleted].studentList:
+                                            careerList[careerseleted].studentList.append(addIdentificationCard)
                                         else:
                                             print("El estudiante ya esta matriculado en esta carrera")
-                                    courseList[i].studentList.append(addCode)
+                                    courseList[i].studentList.append(addIdentificationCard)
+                                    print("Asignación Correcta.\n")
                                     SetCourseList(courseList)
                                     SetCareerList(careerList)
                                     break
+                        else:
+                            print("La Cédula ingresada no Existe.\n")
                     elif optionsEntry == "0":
                         break
                     else:
-                        print("No has pulsado ninguna opcion correcta... \n"
-                              "P1resione una tecla para volver a las Opciónes")
+                        print("\nNo has pulsado ninguna opcion correcta... \n"
+                              "Presione una tecla para volver a las Opciones.")
                 else:
                     break
 def DeleteStudentToCourse():
@@ -73,31 +79,37 @@ def DeleteStudentToCourse():
         return
     for i in range(len(courseList)):
         if i == int(enterCoursePosition):
-            deleteCode = input("Ingrese la Cédula que desea eliminar: ")
+            ListOfStudentIdentificationCard()
+            deleteCode = input("\nIngrese la Cédula del Estudiante que desea eliminar: ")
+            deleteCode = deleteCode.upper()
             if deleteCode in courseList[i].studentList:
                 courseList[i].studentList.remove(deleteCode)
             else:
-                print("no existe el estudinte")
+                print("No existe el Estudinte.")
     SetCourseList(courseList)
 def StudentToCourseMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Asignar un Estudiante a un Curso.\n"
-          "\t2.. Desasignar un Estudiante a un Curso.\n"
-          "\t0.. Volver al Menú Operativo.")
+          "\t1...Asignar un Estudiante a un Curso.\n"
+          "\t2...Desasignar un Estudiante a un Curso.\n"
+          "\t3...Visualizar las asignaciones de la Carrera.\n"
+          "\t0...Volver al Menú Operativo.")
 def StudentToCourseMenuOptions():
     while True:
         StudentToCourseMenu()
         optionsEntry = input("Ingrese la opción a Escoger: ")
-        if optionsEntry== "1" :
+        if optionsEntry == "1":
             AddStudenLogicToCourses()
-            input("Pulsa una tecla para continuar.")
-        elif optionsEntry == "2" :
+            input("\nPulsa una tecla para continuar.")
+        elif optionsEntry == "2":
             DeleteStudentToCourse()
-        elif optionsEntry == "0" :
+            input("\nPulsa una tecla para continuar.")
+        elif optionsEntry == "3":
+            ShowAsignationToCourses()
+            input("\nPulsa una tecla para continuar.")
+        elif optionsEntry == "0":
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
 StudentToCourseMenuOptions()

@@ -1,10 +1,14 @@
-from sqlite3 import adapt
-
-from ClassLogic.CareerLogic import *
 from ClassLogic.CourseLogic import *
+from ClassLogic.CareerLogic import *
+codeList = []
+def ListOfCoursesCodes():
+    courseList = GetCourseList()
+    for j in range(len(courseList)):
+        codeList.append(courseList[j].courseCode)
+        print("Nombre del Curso: ", courseList[j].courseName, " **Código del Curso: ", courseList[j].courseCode)
 def AddCourseToCareer():
-    ShowCareerList()
     careerList = GetCareerList()
+    ShowCareerList()
     enterCareerPosition = input("\nIngrese la Carrera que quiere Agregar Cursos: ")
     if not enterCareerPosition.isdigit():
         print("Haz ingresado un dato que no es un número.")
@@ -12,17 +16,13 @@ def AddCourseToCareer():
     for i in range(len(careerList)):
         if i == int(enterCareerPosition):
             while True:
-                print("1.. Asignar un Curso a una Carrera.\n"
-                      "0.. Salir.")
-                optionsEntry = input(" Ingrese una Opcion: ")
+                print("1...Asignar un Curso a una Carrera.\n"
+                      "0...Salir.")
+                optionsEntry = input("\nIngrese una Opción: ")
                 if optionsEntry != "0":
                     if optionsEntry == "1":
-                        courseList = GetCourseList()
-                        codeList = []
-                        for j in range(len(courseList)):
-                            codeList.append(courseList[j].courseCode)
-                            print("Nombre del Curso: ",courseList[j].courseName," Código del Curso: ",courseList[j].courseCode)
-                        addCode = input("ingrese codigo")
+                        ListOfCoursesCodes()
+                        addCode = input("\nIngrese el código del Curso a Asignar: ")
                         addCode = addCode.upper()
                         for o in codeList:
                             if o in addCode:
@@ -32,49 +32,59 @@ def AddCourseToCareer():
                                         break
                                 else:
                                     careerList[i].courseList.append(addCode)
-                                    print(careerList[i].courseList)
+                                    print("Asignación Correcta.\n")
                                     SetCareerList(careerList)
+                        else:
+                            print("El Código del Curso no Existe.\n")
                     elif optionsEntry == "0":
                         break
                     else:
-                        print("No has pulsado ninguna opcion correcta... \n"
-                              "Presione una tecla para volver a las Opciónes")
+                        print("\nNo has pulsado ninguna opcion correcta... \n"
+                              "Presione una tecla para volver a las Opciones.")
                 else:
                     break
 def DeleteCourseToCareer():
     ShowCareerList()
     careerList = GetCareerList()
     enterCareerPosition = input("\nIngrese la Carrera que quiere Eliminar Cursos: ")
+
     if not enterCareerPosition.isdigit():
         print("Haz ingresado un dato que no es un número.")
         return
     for i in range(len(careerList)):
         if i == int(enterCareerPosition):
-            deleteCode = input("Ingrese el codigo que desea eliminar")
+            ListOfCoursesCodes()
+            deleteCode = input("Ingrese el código del Curso que desea Eliminar: ")
+            deleteCode = deleteCode.upper()
             if deleteCode in  careerList[i].courseList:
                 careerList[i].courseList.remove(deleteCode)
+                print("Desasignación Correcta.\n")
             else:
-                print("No existe ese Curso")
+                print("No existe ese Curso.")
     SetCareerList(careerList)
 def CourseToCarrerMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Asignar un Curso a una Carrera.\n"
-          "\t2.. Desasignar un Cursos a una Carrera.\n"
-          "\t0.. Volver al Menú Operativo.")
+          "\t1...Asignar un Curso a una Carrera.\n"
+          "\t2...Desasignar un Cursos a una Carrera.\n"
+          "\t3...Visualizar las asignaciones de la Carrera.\n"
+          "\t0...Volver al Menú Operativo.")
 def CourseToCarrerMenuOptions():
     while True:
         CourseToCarrerMenu()
-        optionsEntry = input("Ingrese la opción a Escoger: ")
-        if optionsEntry== "1" :
+        optionsEntry = input("\nIngrese la opción a Escoger: ")
+        if optionsEntry == "1":
             AddCourseToCareer()
-            input("Pulsa una tecla para continuar.")
-        elif optionsEntry == "2" :
+            input("\nPulsa una tecla para continuar.")
+        elif optionsEntry == "2":
             DeleteCourseToCareer()
-        elif optionsEntry == "0" :
+            input("\nPulsa una tecla para continuar.")
+        elif optionsEntry == "3":
+            ShowAsignationToCareer()
+            input("\nPulsa una tecla para continuar.")
+        elif optionsEntry == "0":
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
 CourseToCarrerMenuOptions()

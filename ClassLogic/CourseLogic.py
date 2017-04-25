@@ -1,7 +1,7 @@
-import pickle
 from ClassLogic.CareerLogic import *
 from ClassTypes.Course import *
 from pathlib import Path
+import pickle
 def GetCourseList():
     myCourseFile = Path("..\Files\CourseFile.pickle")
     if myCourseFile.is_file():
@@ -45,13 +45,11 @@ def DeleteCourse():
     SetCourseList(courseList)
     SetCareerList(careerList)
 def ShowCourseList():
-    #Preguntar que si hay que imprimir las asignaciones
     courseNumber = 0
     courseList = GetCourseList()
     for course in courseList:
         courseNumber = courseNumber + 1
-        print("Número de Curso: ",courseNumber - 1," **Nombre: ",course.courseName, " **Código: ",course.courseCode,
-              "Est",course.studentList,"prf",course.teacherList,course.campusList,course.classRoomsList,course.classScheduleList)
+        print("Número de Curso: ",courseNumber - 1," **Nombre: ",course.courseName, " **Código: ",course.courseCode)
 def ModifyCourse():
     ShowCourseList()
     enterCoursePosition = int(input("\nIngrese el numero del Curso que quiera Modificar: "))
@@ -80,14 +78,24 @@ def ModifyCourse():
     if not courseExist:
         print("El Curso NO Existe.")
     SetCourseList(courseList)
+def ShowAsignationToCourses():
+    courseList = GetCourseList()
+    courseNumber = 0
+    for course in courseList:
+        courseNumber = courseNumber + 1
+        print("Número de Curso: ", courseNumber - 1, " **Nombre: ", course.courseName, " **Código: ", course.courseCode,
+              " **Lista de Estudiantes: ", course.studentList, " \n\t**Lista de Profesores: ", course.teacherList,
+              " **Recinto donde Pertenece: ", course.campusList, " **Aulas donde se Imparten Clases: ",
+              course.classRoomsList," **Horario del Curso: ", course.classScheduleList)
+
 def CourseMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
-          "\t1.. Agregar Curso.\n"
-          "\t2.. Eliminar Curso.\n"
-          "\t3.. Ver Cursos.\n"
-          "\t4.. Modificar Cursos.\n"
-          "\t0.. Volver al Menú Administrativo.")
+          "\t1...Agregar Curso.\n"
+          "\t2...Eliminar Curso.\n"
+          "\t3...Ver Cursos.\n"
+          "\t4...Modificar Cursos.\n"
+          "\t0...Volver al Menú Administrativo.")
 def CourseMenuOptions():
     while True:
         CourseMenu()
@@ -107,6 +115,5 @@ def CourseMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            print("")
-            input("No has pulsado ninguna opción correcta...\n"
+            input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
