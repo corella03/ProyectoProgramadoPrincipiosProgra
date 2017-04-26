@@ -1,3 +1,4 @@
+#Constructor of Class Career
 class Career():
     def __init__(self,nameEntry,codeEntry):
         self.name = nameEntry

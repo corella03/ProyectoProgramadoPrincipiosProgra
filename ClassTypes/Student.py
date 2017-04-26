@@ -1,3 +1,4 @@
+#Constructor of Class Student
 class Student ():
     def __init__(self,nameEntry,lastNameEntry,identificationCardEntry,addressEntry,phoneEntry,emailEntry):
         self.name = nameEntry

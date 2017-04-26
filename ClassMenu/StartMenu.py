@@ -1,19 +1,13 @@
+#Imports
 from ClassMenu.AdministrativeMenu import *
 from ClassLogic.AdministratorLogic import *
-import getpass
-#passwordEntry = input(getpass.getpass("Digite Contra\n--->"))
+#This function displays a message
 def Menu():
     print("==================================\n"
           " Gestion de Elementons Principales\n"
           " Respecto a la Educación de la UTN\n"
-          "==================================\n"
-          "             Ingrese              \n"
-          "              * *                 \n"
-          "              * *                 \n"
-          "            *** ***               \n"
-          "              ***                 \n"
-          "               *                  \n")
-
+          "==================================\n")
+#The program is accessed
 def DataManager():
     Menu()
     idEntry = input("Digite Usuario\n---> ")

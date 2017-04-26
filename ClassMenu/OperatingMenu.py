@@ -1,3 +1,4 @@
+#Imports
 from ClassOperatingLogic.CampusToCoursesLogic import *
 from ClassOperatingLogic.ClassRoomsToCoursesLogic import *
 from ClassOperatingLogic.ClassScheduleToCoursesLogic import *
@@ -6,18 +7,22 @@ from ClassOperatingLogic.StudentToCoursesLogic import *
 from ClassOperatingLogic.TeacherToCareerLogic import *
 from ClassOperatingLogic.TeacherToCoursesLogic import *
 from ClassOperatingLogic.StudentToCareerLogic import *
+#This function shows the options
+def OperatingMenu():
+    print("\nSelecciona una Opción.\n"
+          "\t1...Asignar Cursos a Carreras.\n"
+          "\t2...Asignar Recintos a Cursos.\n"
+          "\t3...Asignar Aulas a Cursos.\n"
+          "\t4...Asignar Horarios a Cursos .\n"
+          "\t5...Asignar Docentes a Cursos.\n"
+          "\t6...Asignar Docentes a Carreras.\n"
+          "\t7...Asignar Estudiantes a Cursos.\n"
+          "\t8...Asignar Estudiantes a Carreras.\n"
+          "\t0...Volver al Menú Principal.")
+#This function is chosen the option
 def OperatingMenuOptions():
     while True:
-        print("\nSelecciona una Opción.\n"
-               "\t1...Asignar Cursos a Carreras.\n"
-               "\t2...Asignar Recintos a Cursos.\n"
-               "\t3...Asignar Aulas a Cursos.\n"
-               "\t4...Asignar Horarios a Cursos .\n"
-               "\t5...Asignar Docentes a Cursos.\n"
-               "\t6...Asignar Docentes a Carreras.\n"
-               "\t7...Asignar Estudiantes a Cursos.\n"
-               "\t8...Asignar Estudiantes a Carreras.\n"
-               "\t0...Volver al Menú Principal.")
+        OperatingMenu()
         optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             CourseToCarrerMenuOptions()

@@ -1,3 +1,4 @@
+#Constructor of Class Course
 class Course():
     def __init__(self,nameEntry,codeEntry):
         self.courseName = nameEntry

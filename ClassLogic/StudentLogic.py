@@ -1,31 +1,38 @@
+#Imports
 from ClassTypes.Student import *
 from ClassLogic.CourseLogic import *
 from ClassLogic.CareerLogic import *
 import pickle
 from pathlib import Path
+#This function is responsible for creating, and opening the file
 def GetStudenList():
+    # Path: Displays the file path
     myStudentFile = Path("..\Files\StudentFile.pickle")
-    if myStudentFile.is_file():#yaExiste es porque alguien le metio una lista "Algo"
+    if myStudentFile.is_file():#the file exists
         with open("..\Files\StudentFile.pickle", "rb") as studentFile:
-            studentList = pickle._load(studentFile)
+            studentList = pickle._load(studentFile)#Show File Information
         return studentList
-    return []#si no creemela lsta
+    return []#If the file does not exist, an empty list is created
+#This function is responsible for saving to the list
 def SetStudentList(studentList):
     with open("..\Files\StudentFile.pickle","wb") as studentFile:
-        pickle._dump(studentList, studentFile)
+        pickle._dump(studentList, studentFile)#Save
+# Function to add Campus
 def AddStudent():
     studentList = GetStudenList()
     identificationCardEntry = input("Ingrese el número de Cédula del Estudiante: ")
     domainStudent = '@est.utn.ac.cr'
     allIdToStudent = []
+    # Sort a list based on parameters
     sorterStudentList = sorted(studentList, key=lambda student: student.identificationCard)
+    # Validate if a code exists
     for idStudent in sorterStudentList:
         allIdToStudent.append(idStudent.identificationCard)
     for j in range(len(allIdToStudent)):
         if allIdToStudent[j] == identificationCardEntry:
             print("El Estudiante ya existe.")
             break
-    else:
+    else: #Create if it does not exist
         nameEntry = input("Ingrese el Nombre del Estudiante: ")
         lastNameEntry = input("Ingrese el Apellido del Estudiante: ")
         addressEntry = input("Ingrese la Dirección donde vive el Estudiante: ")
@@ -40,15 +47,17 @@ def AddStudent():
         newStudent = Student(nameEntry, lastNameEntry, identificationCardEntry, addressEntry, phoneEntry, emailEntry)
         studentList.append(newStudent)
         SetStudentList(studentList)
+#Function to remove campus
 def DeleteStudent():
     studentList = GetStudenList()
     careerList = GetCareerList()
     courseList = GetCourseList()
     ShowStudentList()
     enterStudentPosition = input("\nIngrese el numero del estudiante que quiera eliminar: ")
-    if not enterStudentPosition.isdigit():
+    if not enterStudentPosition.isdigit(): #Validate that only numbers are entered
         print("Haz ingresado un dato que no es un número.")
-        return
+        return#If you do not enter a number, return it
+    #To remove from assignments
     for career in careerList:
         if studentList[int(enterStudentPosition)].identificationCard in career.studentList:
             career.studentList.remove(studentList[int(enterStudentPosition)].identificationCard)
@@ -60,6 +69,7 @@ def DeleteStudent():
     SetStudentList(studentList)
     SetCareerList(careerList)
     SetCourseList(courseList)
+# Shows the attributes of the campus
 def ShowStudentList():
     #Preguntar si se imprimen las asignaciones
     studentNumber = 0
@@ -69,11 +79,15 @@ def ShowStudentList():
         print("Número del Estudiante: ",studentNumber - 1," **Nombre: ",student.name," **Apellido: ",student.lastName," **Cédula: ",
               student.identificationCard," **Número Telefonico: ",student.phone," **Dirección de Residencia: ",student.address,
               " **Correo Eléctronico ",student.email)
+#Function that modifies the student
 def ModifyStudent():
     ShowStudentList()
     studentList = GetStudenList()
-    studentExist = False
+    studentExist = False #To validate if the campus exists
     enterStudentPosition = input("\nIngrese el numero del estudiante que quiera Modificar: ")
+    if not enterStudentPosition.isdigit(): #Validate that only numbers are entered
+        print("Haz ingresado un dato que no es un número.")
+        return #If you do not enter a number, return it
     for i in range(len(studentList)):
         if i == int(enterStudentPosition):
             studentExist = True
@@ -86,6 +100,7 @@ def ModifyStudent():
                       "\t6...Modificar Correo del Estudiante.\n",
                       "\t0...Salir.")
                 optionsEntry = input("\nIngrese la Opción a Escoger: ")
+                # Options to modify
                 if optionsEntry != "0":
                     if optionsEntry == "1":
                         studentList[i].name = input("Ingrese nuevo Nombre: ")
@@ -108,6 +123,7 @@ def ModifyStudent():
     if not studentExist:
         print("El Estudiante NO Existe.")
     SetStudentList(studentList)
+# Options to modify
 def StudentMenu():
     print("\n========= SELECCIONE =========\n"
           "========= UNA OPCION =========\n"
@@ -116,6 +132,7 @@ def StudentMenu():
           "\t3...Ver Lista Estudianten.\n"
           "\t4...Modificar Estudiante.\n"
           "\t0...Volver al Menú Administrativo.")
+#This function is chosen the option
 def StudentMenuOptions():
     while True:
         StudentMenu()

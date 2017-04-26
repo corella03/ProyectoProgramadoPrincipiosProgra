@@ -1,3 +1,4 @@
+#Constructor of Class Teacher
 class Teacher():
     def __init__(self,nameEntry,lastNameEntry,identificationCardEntry, residencyEntry, phoneEntry, emailEntry):
         self.teacherName=nameEntry

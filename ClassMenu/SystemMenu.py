@@ -1,3 +1,4 @@
+#Imports
 from ClassLogic.StudentLogic import *
 from ClassLogic.CampusLogic import*
 from ClassLogic.TeacherLogic import *
@@ -5,17 +6,21 @@ from ClassLogic.ClassroomsLogic import *
 from ClassLogic.ClassScheduleLogic import *
 from ClassLogic.CourseLogic import *
 from ClassLogic.CareerLogic import *
+#This function shows the options
+def Menu():
+    print("\nSelecciona una Opción.\n"
+          "\t1...Opciones Estudiante.\n"
+          "\t2...Opciones Docentes.\n"
+          "\t3...Opciones Carreras.\n"
+          "\t4...Opciones Cursos.\n"
+          "\t5...Opciones Recintos.\n"
+          "\t6...Opciones Aulas.\n"
+          "\t7...Opciones Horarios.\n"
+          "\t0...Volver al Menú Principal.")
+#This function is chosen the option
 def MenuOptions():
     while True:
-        print("\nSelecciona una Opción.\n"
-        "\t1...Opciones Estudiante.\n"
-        "\t2...Opciones Docentes.\n"
-        "\t3...Opciones Carreras.\n"
-        "\t4...Opciones Cursos.\n"
-        "\t5...Opciones Recintos.\n"
-        "\t6...Opciones Aulas.\n"
-        "\t7...Opciones Horarios.\n"
-        "\t0...Volver al Menú Principal.")
+        Menu()
         optionsEntry = input("\nIngrese la Opción a Escoger: ")
         if optionsEntry == "1":
             StudentMenuOptions()
