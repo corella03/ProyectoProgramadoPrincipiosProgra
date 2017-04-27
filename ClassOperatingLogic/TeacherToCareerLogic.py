@@ -32,7 +32,6 @@ def AddTeacherToCareer():
                                 for k in careerList[i].teacherList:
                                     if k == addIdentificationCard:# Verify that the entered identification card is not assigned
                                         # If the identification card is the same do not enter it
-                                        print("Este Docente ya está Registrado en esta Carrera.")
                                         break
                                 else: #If it is not the same add it
                                     careerList[i].teacherList.append(addIdentificationCard)
@@ -40,7 +39,7 @@ def AddTeacherToCareer():
                                     SetCareerList(careerList)
                                     break
                         else:
-                            print("La Cédula ingresada no Existe.\n")
+                            print("La Cédula ingresada no Existe o el Docente ya fue Asigando.\n")
                     else:
                         input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciones.")
@@ -69,7 +68,6 @@ def DeleteTeacherToCareer():
                                 courseList[l].teacherList.remove(deleteCode)
             else:
                 print("No haz Pulsado una Opción Correcta o No Existe el número de Cédula.")
-
     SetCourseList(courseList)
     SetCareerList(careerList)
 #This function shows the options
@@ -99,4 +97,3 @@ def TeacherToCareerMenuOptions():
         else:
             input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-TeacherToCareerMenuOptions()

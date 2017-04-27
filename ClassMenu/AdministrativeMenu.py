@@ -3,6 +3,7 @@ from ClassLogic.AdministratorLogic import *
 from ClassMenu.SystemMenu import *
 from ClassMenu.OperatingMenu import *
 from ClassMenu.ReportsMenu import *
+import sys
 #This function shows the options
 def AdminMenu():
     print("\nBienvenido Señor(a)\n"
@@ -11,7 +12,7 @@ def AdminMenu():
     "\t2...Menú Administrativo.\n"
     "\t3...Menú Operativo.\n"
     "\t4...Menú de Reportes.\n"
-    "\t0...Volver al Menú del Sistema.\n")
+    "\t0...Salir.\n")
 #This function is chosen the option
 def ChooseOption():
     while True:
@@ -30,7 +31,7 @@ def ChooseOption():
             ReportsMenuOptions()
             input("\nPulsa una tecla para continuar.")
         elif AdminMenuOptions == "0":
-            break
+            sys.exit()
         else:
             input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")

@@ -19,7 +19,7 @@ def SetTeacherList(teacherList):
 #Function to add Campus
 def AddTeacher():
     teacherList = GetTeacherList()
-    identificationCardEntry = str(input("Ingrese el número de Cédula del Docente: "))
+    identificationCardEntry = input("Ingrese el número de Cédula del Docente: ")
     domainTeacher = "@utn.ac.cr"
     allIdToTeacher = []
     # Sort a list based on parameters
@@ -32,12 +32,12 @@ def AddTeacher():
             print("El Docente ya existe.")
             break
     else: #Create if it does not exist
-        nameEntry = str(input("Ingrese el Nombre del Docente: "))
-        lastNameEntry = str(input("Ingrese el Apellido del Docente: "))
-        addressEntry = str(input("Ingrese el Lugar de Residencia del Docente: "))
-        phoneEntry = str(input("Ingrese el Numero de telefono del Docente: "))
+        nameEntry = input("Ingrese el Nombre del Docente: ")
+        lastNameEntry = input("Ingrese el Apellido del Docente: ")
+        addressEntry = input("Ingrese el Lugar de Residencia del Docente: ")
+        phoneEntry = input("Ingrese el Numero de telefono del Docente: ")
         while True:
-            emailEntry = str(input("Ingrese solo el nombre del Correo del Docente: "))
+            emailEntry = input("Ingrese solo el nombre del Correo del Docente: ")
             if "@" in emailEntry:
                 print("Error al ingresar el correo, ingrese solo el nombre sin el @...")
             else:
@@ -75,7 +75,7 @@ def ShowTeacherList():
 #Function that modifies the campus
 def ModifyTeacher():
     ShowTeacherList()
-    modify = input("\nIngrese el número del Docente que desea modificar:")
+    modify = input("\nIngrese el número del Docente que desea modificar: ")
     if not modify.isdigit(): #Validate that only numbers are entered
         print("Haz ingresado un dato que no es un número.")
         return #If you do not enter a number, return it
@@ -96,17 +96,17 @@ def ModifyTeacher():
                 # Options to modify
                 if option != "0":
                     if option == "1":
-                        teacherList[x].teacherName = input("Ingrese un Nombre Nuevo")
+                        teacherList[x].teacherName = input("Ingrese un Nombre Nuevo: ")
                     elif option == "2":
-                        teacherList[x].teacherLastName = input("Ingrese un Apellido Nuevo")
+                        teacherList[x].teacherLastName = input("Ingrese un Apellido Nuevo: ")
                     elif option == "3":
-                        teacherList[x].teacherIdentificationCard = input("Ingrese una cédula Nueva")
+                        teacherList[x].teacherIdentificationCard = input("Ingrese una cédula Nueva: ")
                     elif option == "4":
-                        teacherList[x].teacherResidency = input("Ingrese una Residencia Nueva")
+                        teacherList[x].teacherResidency = input("Ingrese una Residencia Nueva: ")
                     elif option == "5":
-                        teacherList[x].teacherPhone = input("Ingrese un número Nuevo")
+                        teacherList[x].teacherPhone = input("Ingrese un número Nuevo: ")
                     elif option == "6":
-                        teacherList[x].teacherEmail = input("Ingrese un Correo Nuevo")
+                        teacherList[x].teacherEmail = input("Ingrese un Correo Nuevo: ")
                     else:
                         input("\nNo has pulsado ninguna opción correcta...\n"
                               "Presione una tecla para volver a las Opciones.")

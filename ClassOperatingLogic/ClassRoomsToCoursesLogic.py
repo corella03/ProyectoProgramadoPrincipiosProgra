@@ -33,8 +33,7 @@ def AddClassRoomsToCourses():
                             if o in addCode: # If the code entered matches some code from the list
                                 for k in courseList[i].classRoomsList:
                                     if k == addCode:# Verify that the entered code is not assigned
-                                        # If the code is the same do not enter it
-                                        print("El Aula ya se Asignó a este Curso.")
+                                                    # If the code is the same do not enter it
                                         break
                                 else:#If it is not the same add it
                                     courseList[i].classRoomsList.append(addCode)
@@ -42,9 +41,9 @@ def AddClassRoomsToCourses():
                                     SetCourseList(courseList)
                                     break
                         else:
-                            print("El Código del Aula no Existe.\n")
+                            print("El Código del Aula no Existe o ya fue Asignado.\n")
                     else:
-                        input("\nNo has pulsado ninguna opcion correcta... \n"
+                        input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciónes.")
                 elif optionsEntry == "0":
                     print("Saliendo...")
@@ -66,8 +65,8 @@ def DeletClassRoomsToCourses():
             if deleteCode in courseList[i].classRoomsList:
                 courseList[i].classRoomsList.remove(deleteCode)
                 print("Desasignación Correcta.\n")
-        else:
-            print("No haz Pulsado una Opción Correcta o el Aula no ha sido Asignado.")
+            else:
+                print("No haz Pulsado una Opción Correcta o el Aula no ha sido Asignado.")
     SetCourseList(courseList)
 #This function shows the options
 def ClassRoomsToCoursesMenu():
@@ -94,6 +93,5 @@ def ClassRoomsToCoursesMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            input("\nNo has pulsado ninguna opción correcta...\n"
+            input("\nNo haz pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-ClassRoomsToCoursesMenuOptions()

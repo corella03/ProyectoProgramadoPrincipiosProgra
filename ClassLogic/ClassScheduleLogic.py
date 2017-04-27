@@ -54,8 +54,8 @@ def DeleteClassSchedule():
         return #If you do not enter a number, return it
     # To remove from assignments
     for course in courseList:
-        if (classScheduleList[int(enterClassSchedulePosition)]).scheduleType in course.classScheduleList:
-            course.classRoomsList.remove(classScheduleList[int(enterClassSchedulePosition)].scheduleType)
+        if classScheduleList[int(enterClassSchedulePosition)].scheduleType in course.classScheduleList:
+            course.classScheduleList.remove(classScheduleList[int(enterClassSchedulePosition)].scheduleType)
     if classScheduleList[int(enterClassSchedulePosition)] in classScheduleList:
         classScheduleList.remove(classScheduleList[int(enterClassSchedulePosition)])
     SetClassScheduleList(classScheduleList)
@@ -87,9 +87,9 @@ def ModifyClassSchedule():
                 # Options to modify
                 if optionsEntry != "0":
                     if optionsEntry == "1":
+                        classScheduleList[i].scheduleType = input("Ingrese nuevo Tipo: ")
+                        classScheduleList[i].scheduleType = classScheduleList[i].scheduleType.upper()  # Switch to uppercase
                         for i in range(len(allTypeClassSchedule)):
-                            classScheduleList[i].scheduleType = input("Ingrese nuevo Tipo: ")
-                            classScheduleList[i].scheduleType = classScheduleList[i].scheduleType.upper()#Switch to uppercase
                             if allTypeClassSchedule[i] == classScheduleList[i].scheduleType:
                                 print("El Horario ya existe")
                                 break

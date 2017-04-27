@@ -131,4 +131,3 @@ def CampusMenuOptions():
         else:
             input("\nNo has pulsado ninguna opción correcta...\n"
                   "Presione enter Para volver al Menú.")
-CampusMenuOptions()

@@ -129,7 +129,7 @@ def StudentMenu():
           "========= UNA OPCION =========\n"
           "\t1...Agregar Estudiante.\n"
           "\t2...Eliminar Estudiante.\n"
-          "\t3...Ver Lista Estudianten.\n"
+          "\t3...Ver Lista Estudiante.\n"
           "\t4...Modificar Estudiante.\n"
           "\t0...Volver al Menú Administrativo.")
 #This function is chosen the option

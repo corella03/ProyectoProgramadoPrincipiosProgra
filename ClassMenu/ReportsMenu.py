@@ -86,7 +86,7 @@ def Report3():
     print(time.strftime('%d %b %y'))
     print(time.strftime('%H:%M:%S'))
     if not teacherExist:
-        print("No existe el Estudiante.")
+        print("No existe el Docente.")
 #This function Prints the list of Courses per Career to which a Student belongs
 def Report4():
     careerList = GetCareerList()

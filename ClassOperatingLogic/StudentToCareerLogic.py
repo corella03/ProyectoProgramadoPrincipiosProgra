@@ -32,8 +32,7 @@ def AddStudentToCareer():
                             if o in addIdentificationCard: # If the identification card entered matches some identification card from the list
                                 for k in careerList[i].studentList:
                                     if k == addIdentificationCard:# Verify that the entered identification card is not assigned
-                                        # If the identification card is the same do not enter it
-                                        print("El Estudiante ya esta Matriculado en es Carrera.")
+                                                                  # If the identification card is the same do not enter it
                                         break
                                 else: #If it is not the same add it
                                     careerList[i].studentList.append(addIdentificationCard)
@@ -41,7 +40,7 @@ def AddStudentToCareer():
                                     SetCareerList(careerList)
                                     break
                         else:
-                            print("La Cédula ingresada no Existe.\n")
+                            print("La Cédula ingresada no Existe o el Estudiante ya esta Matriculado.\n")
                     else:
                         input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciones.")
@@ -71,7 +70,7 @@ def DeleteStudentToCareer():
                             if deleteidentificationCard in courseList[l].studentList:
                                 courseList[l].studentList.remove(deleteidentificationCard)
             else:
-                    print("No haz Pulsado una Opción Correcta o el Estudiante no ha sido Matriculado.")
+                print("No haz Pulsado una Opción Correcta o el Estudiante no ha sido Matriculado.")
     SetCourseList(courseList)
     SetCareerList(careerList)
 #This function shows the options
@@ -99,6 +98,5 @@ def StudentToCarrerMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            input("\nNo has pulsado ninguna opción correcta...\n"
+            input("\nNo haz pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-StudentToCarrerMenuOptions()

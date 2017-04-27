@@ -33,8 +33,6 @@ def AddCourseToCareer():
                                 for k in careerList[i].courseList:
                                     if k == addCode:# Verify that the entered code is not assigned
                                         # If the code is the same do not enter it
-                                        ############## Borrar
-                                        print("El Curso ya está en esta Carrera.")
                                         break
                                 else:#If it is not the same add it
                                     careerList[i].courseList.append(addCode)
@@ -42,9 +40,9 @@ def AddCourseToCareer():
                                     SetCareerList(careerList)
                                     break
                         else:
-                            print("El Código del Curso no Existe.\n")
+                            print("El Código del Curso no Existe o ya fue Asignado.\n")
                     else:
-                        input("\nNo has pulsado ninguna opcion correcta... \n"
+                        input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciones.")
                 elif optionsEntry == "0":
                     print("Saliendo...")
@@ -66,8 +64,8 @@ def DeleteCourseToCareer():
             if deleteCode in  careerList[i].courseList:
                 careerList[i].courseList.remove(deleteCode)
                 print("Desasignación Correcta.\n")
-        else:
-            print("No haz Pulsado una Opción Correcta o el Curso no ha sido Asignado.")
+            else:
+                print("No haz Pulsado una Opción Correcta o el Curso no ha sido Asignado.")
     SetCareerList(careerList)
 #This function shows the options
 def CourseToCarrerMenu():
@@ -94,6 +92,5 @@ def CourseToCarrerMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            input("\nNo has pulsado ninguna opción correcta...\n"
+            input("\nNo haz pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-CourseToCarrerMenuOptions()

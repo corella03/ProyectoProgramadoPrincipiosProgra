@@ -32,8 +32,7 @@ def AddCampusToCourses():
                             if o in addCode:# If the code entered matches some code from the list
                                 for k in courseList[i].campusList:
                                     if k == addCode: # Verify that the entered code is not assigned
-                                        # If the code is the same do not enter it
-                                        print("El Recinto ya se Asignó a este curso.")
+                                                     # If the code is the same do not enter it
                                         break
                                 else: #If it is not the same add it
                                     courseList[i].campusList.append(addCode)
@@ -41,9 +40,9 @@ def AddCampusToCourses():
                                     SetCourseList(courseList)
                                     break
                         else:
-                            print("El Código del Recinto no Existe.\n")
+                            print("El Código del Recinto no Existe o ya fue Asignado.\n")
                     else:
-                        input("\nNo has pulsado ninguna opcion correcta... \n"
+                        input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciones.")
                 elif optionsEntry == "0":
                     print("Saliendo...")
@@ -65,8 +64,8 @@ def DeleteCampusToCourse():
             if deleteCode in courseList[i].campusList:
                 courseList[i].campusList.remove(deleteCode)
                 print("Desasignación Correcta.\n")
-        else:
-            print("No haz Pulsado una Opción Correcta o el Recinto no ha sido Asignado.")
+            else:
+                print("No haz Pulsado una Opción Correcta o el Recinto no ha sido Asignado.")
     SetCourseList(courseList)
 #This function shows the options
 def CampusToCourseMenu():
@@ -76,7 +75,7 @@ def CampusToCourseMenu():
           "\t2...Desasignar un Recinto a un Curso.\n"
           "\t3...Visualizar las asignaciones del Curso.\n"
           "\t0...Volver al Menú Operativo.")
-#This function is chosen the option
+##This function is chosen the option
 def CampusToCourseMenuOptions():
     while True:
         CampusToCourseMenu()
@@ -93,6 +92,5 @@ def CampusToCourseMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            input("\nNo has pulsado ninguna opción correcta...\n"
+            input("\nNo haz pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-CampusToCourseMenuOptions()

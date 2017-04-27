@@ -35,7 +35,6 @@ def AddClassScheduleToCourses():
                                 for k in courseList[i].classScheduleList:
                                     if k == addType:# Verify that the entered type is not assigned
                                         # If the type is the same do not enter it
-                                        print("El Horario ya se encuentra en este Curso.")
                                         break
                                 else:#If it is not the same add it
                                     courseList[i].classScheduleList.append(addType)
@@ -43,9 +42,9 @@ def AddClassScheduleToCourses():
                                     SetCourseList(courseList)
                                     break
                         else:
-                            print("El Código del Recinto no Existe.\n")
+                            print("El Tipo de Horario no Existe o ya fue Asignado.\n")
                     else:
-                        input("\nNo has pulsado ninguna opcion correcta... \n"
+                        input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciones.")
                 elif optionsEntry == "0":
                     print("Saliendo...")
@@ -95,6 +94,5 @@ def ClassScheduleToCourseMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            input("\nNo has pulsado ninguna opción correcta...\n"
+            input("\nNo haz pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-ClassScheduleToCourseMenuOptions()

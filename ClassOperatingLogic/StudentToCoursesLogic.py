@@ -34,7 +34,6 @@ def AddStudenLogicToCourses():
                                 for k in courseList[i].studentList:# Verify that the entered identification card is not assigned
                                         # If the identification card is the same do not enter it
                                     if k == addIdentificationCard:
-                                        print("El Estudiante ya está Matriculado en este Curso.")
                                         break
                                 else: #If it is not the same add it
                                     # Validate if a course belongs to more than one career
@@ -52,24 +51,24 @@ def AddStudenLogicToCourses():
                                             careerList[careerIndexes[0]].studentList.append(addIdentificationCard)
                                             print("Asignación Correcta.\n")
                                     else: #If the course is assigned to more than one career choose where to assign the student
-                                        print("A cual carrera quiere asignar el estudiente")
+                                        print("A cual carrera quiere asignar el estudiente.")
                                         for e in careerIndexes:
-                                            print(e, careerList[i].name)
-                                        careerseleted = int(input("digite la posicion de la carrera"))
+                                            print(e,"-", careerList[e].name)
+                                        careerseleted = int(input("Digite la posicion de la carrera."))
                                         #validate not repeat students
                                         if not addIdentificationCard in careerList[careerseleted].studentList:
                                             careerList[careerseleted].studentList.append(addIdentificationCard)
                                         else:
-                                            print("El estudiante ya esta matriculado en esta carrera")
+                                            break
                                     courseList[i].studentList.append(addIdentificationCard)
-                                    print("Asignación Correcta.\n")
+                                    print(courseList[i].studentList)
                                     SetCourseList(courseList)
                                     SetCareerList(careerList)
                                     break
                         else:
-                            print("La Cédula ingresada no Existe.\n")
+                            print("La Cédula ingresada no Existe o el estudiante ya esta matriculado.\n")
                     else:
-                        input("\nNo has pulsado ninguna opcion correcta... \n"
+                        input("\nNo haz pulsado ninguna opcion correcta... \n"
                               "Presione una tecla para volver a las Opciones.")
                 elif optionsEntry == "0":
                     print("Saliendo...")
@@ -118,6 +117,5 @@ def StudentToCourseMenuOptions():
         elif optionsEntry == "0":
             break
         else:
-            input("\nNo has pulsado ninguna opción correcta...\n"
+            input("\nNo haz pulsado ninguna opción correcta...\n"
                   "Presione enter para volver al Menú.")
-StudentToCourseMenuOptions()
